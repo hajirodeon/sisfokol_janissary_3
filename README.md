@@ -34,3 +34,56 @@ user/pass : 280005
 
 
 
+---
+
+
+
+TAMPILAN AKSES ADMIN
+
+<p>
+<img src="adm/1.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/2.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/3.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/4.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/5.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/6.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/7.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/8.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/9.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/10.png" width="100%"> 
+</p>
+
+<p>
+<img src="adm/11.png" width="100%"> 
+</p>
+
+
+
+
