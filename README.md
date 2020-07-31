@@ -48,47 +48,47 @@ user/pass : 280005
 TAMPILAN AKSES ADMIN
 
 <p>
-<img src="adm/1.png" width="100%"> 
+<img src="tmp_tampilan/admin/1.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/2.png" width="100%"> 
+<img src="tmp_tampilan/admin/2.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/3.png" width="100%"> 
+<img src="tmp_tampilan/admin/3.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/4.png" width="100%"> 
+<img src="tmp_tampilan/admin/4.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/5.png" width="100%"> 
+<img src="tmp_tampilan/admin/5.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/6.png" width="100%"> 
+<img src="tmp_tampilan/admin/6.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/7.png" width="100%"> 
+<img src="tmp_tampilan/admin/7.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/8.png" width="100%"> 
+<img src="tmp_tampilan/admin/8.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/9.png" width="100%"> 
+<img src="tmp_tampilan/admin/9.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/10.png" width="100%"> 
+<img src="tmp_tampilan/admin/10.png" width="100%"> 
 </p>
 
 <p>
-<img src="adm/11.png" width="100%"> 
+<img src="tmp_tampilan/admin/11.png" width="100%"> 
 </p>
 
 
@@ -100,132 +100,132 @@ TAMPILAN AKSES ADMIN
 TAMPILAN AKSES GURU
 
 <p>
-<img src="egr/1.png" width="100%"> 
+<img src="tmp_tampilan/guru/1.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/2.png" width="100%"> 
+<img src="tmp_tampilan/guru/2.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/3.png" width="100%"> 
+<img src="tmp_tampilan/guru/3.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/4.png" width="100%"> 
+<img src="tmp_tampilan/guru/4.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/5.png" width="100%"> 
+<img src="tmp_tampilan/guru/5.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/6.png" width="100%"> 
+<img src="tmp_tampilan/guru/6.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/7.png" width="100%"> 
+<img src="tmp_tampilan/guru/7.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/8.png" width="100%"> 
+<img src="tmp_tampilan/guru/8.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/9.png" width="100%"> 
+<img src="tmp_tampilan/guru/9.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/10.png" width="100%"> 
+<img src="tmp_tampilan/guru/10.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/11.png" width="100%"> 
+<img src="tmp_tampilan/guru/11.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/12.png" width="100%"> 
+<img src="tmp_tampilan/guru/12.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/13.png" width="100%"> 
+<img src="tmp_tampilan/guru/13.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/14.png" width="100%"> 
+<img src="tmp_tampilan/guru/14.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/15.png" width="100%"> 
+<img src="tmp_tampilan/guru/15.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/16.png" width="100%"> 
+<img src="tmp_tampilan/guru/16.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/17.png" width="100%"> 
+<img src="tmp_tampilan/guru/17.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/18.png" width="100%"> 
+<img src="tmp_tampilan/guru/18.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/19.png" width="100%"> 
+<img src="tmp_tampilan/guru/19.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/20.png" width="100%"> 
+<img src="tmp_tampilan/guru/20.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/21.png" width="100%"> 
+<img src="tmp_tampilan/guru/21.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/22.png" width="100%"> 
+<img src="tmp_tampilan/guru/22.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/23.png" width="100%"> 
+<img src="tmp_tampilan/guru/23.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/24.png" width="100%"> 
+<img src="tmp_tampilan/guru/24.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/25.png" width="100%"> 
+<img src="tmp_tampilan/guru/25.png" width="100%"> 
 </p>
 
 
 <p>
-<img src="egr/26.png" width="100%"> 
+<img src="tmp_tampilan/guru/26.png" width="100%"> 
 </p>
 
 
@@ -239,83 +239,83 @@ TAMPILAN AKSES GURU
 TAMPILAN AKSES SISWA
 
 <p>
-<img src="esw/1.png" width="100%"> 
+<img src="tmp_tampilan/siswa/1.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/2.png" width="100%"> 
+<img src="tmp_tampilan/siswa/2.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/3.png" width="100%"> 
+<img src="tmp_tampilan/siswa/3.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/4.png" width="100%"> 
+<img src="tmp_tampilan/siswa/4.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/5.png" width="100%"> 
+<img src="tmp_tampilan/siswa/5.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/6.png" width="100%"> 
+<img src="tmp_tampilan/siswa/6.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/7.png" width="100%"> 
+<img src="tmp_tampilan/siswa/7.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/8.png" width="100%"> 
+<img src="tmp_tampilan/siswa/8.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/9.png" width="100%"> 
+<img src="tmp_tampilan/siswa/9.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/10.png" width="100%"> 
+<img src="tmp_tampilan/siswa/10.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/11.png" width="100%"> 
+<img src="tmp_tampilan/siswa/11.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/12.png" width="100%"> 
+<img src="tmp_tampilan/siswa/12.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/13.png" width="100%"> 
+<img src="tmp_tampilan/siswa/13.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/14.png" width="100%"> 
+<img src="tmp_tampilan/siswa/14.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/15.png" width="100%"> 
+<img src="tmp_tampilan/siswa/15.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/16.png" width="100%"> 
+<img src="tmp_tampilan/siswa/16.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/17.png" width="100%"> 
+<img src="tmp_tampilan/siswa/17.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/18.png" width="100%"> 
+<img src="tmp_tampilan/siswa/18.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/19.png" width="100%"> 
+<img src="tmp_tampilan/siswa/19.png" width="100%"> 
 </p>
 
 <p>
-<img src="esw/20.png" width="100%"> 
+<img src="tmp_tampilan/siswa/20.png" width="100%"> 
 </p>
 
 
