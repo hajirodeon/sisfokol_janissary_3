@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 30 Jul 2020 pada 05.58
+-- Waktu pembuatan: 02 Agu 2020 pada 05.48
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.8
 
@@ -1880,7 +1880,14 @@ INSERT INTO `guru_mapel_log` (`kd`, `kd_guru_mapel`, `ket`, `postdate`, `mapel_k
 ('9af8e1c8537fe190ac839888463d0e3f', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Entri Soal', '2020-07-30 10:55:11', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'GURU', '4a91033bfe52de0aedecd767ee4075c5', '170001', 'Orang BIASAWAE', 'false', NULL),
 ('c67a1a7c6dc9a5cdcca3e42f06de4de5', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Entri Soal', '2020-07-30 10:55:21', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'GURU', '4a91033bfe52de0aedecd767ee4075c5', '170001', 'Orang BIASAWAE', 'false', NULL),
 ('960db84d8879f8fb678e5beb4bd68563', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Entri Soal', '2020-07-30 10:55:23', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'GURU', '4a91033bfe52de0aedecd767ee4075c5', '170001', 'Orang BIASAWAE', 'false', NULL),
-('eff7904c8d72a8845fd6735165860935', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Entri Soal', '2020-07-30 10:55:24', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'GURU', '4a91033bfe52de0aedecd767ee4075c5', '170001', 'Orang BIASAWAE', 'false', NULL);
+('eff7904c8d72a8845fd6735165860935', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Entri Soal', '2020-07-30 10:55:24', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'GURU', '4a91033bfe52de0aedecd767ee4075c5', '170001', 'Orang BIASAWAE', 'false', NULL),
+('f672732214769f91fcedd8884759ef04', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Beranda', '2020-08-02 10:43:16', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('ebc0663ab87871497f98b7ff408c4816', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Soal', '2020-08-02 10:43:22', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('6daac2a22f04c0afc798da9a66ddff7f', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Kerjakan Soal', '2020-08-02 10:43:26', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('f7cede8aea47f669facaa73df5d32aba', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Kerjakan Soal', '2020-08-02 10:43:42', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('58ae9cfc5794e531dc2d20a6a5a999fc', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Soal', '2020-08-02 10:43:48', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('75f5374e0e0bdd3c1c9e2f2859901bf1', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Kerjakan Soal', '2020-08-02 10:43:54', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL),
+('e90e6ac0873e8890fbc7b5c56cec0b73', '041c7cc5a8fb9320f6f3b538ce538b4c', 'Menu Soal', '2020-08-02 10:44:03', 'BING', 'Bahasa Inggris', '2020xgmringx2021', 'X TKJ 1', 'SISWA', 'f4f5d296afead37410f18a6ca7bff265', '280005', 'Orang TeknikNih', 'false', NULL);
 
 -- --------------------------------------------------------
 
@@ -1890,13 +1897,13 @@ INSERT INTO `guru_mapel_log` (`kd`, `kd_guru_mapel`, `ket`, `postdate`, `mapel_k
 
 CREATE TABLE `guru_mapel_news` (
   `kd` varchar(50) NOT NULL,
-  `kd_guru_mapel` varchar(50) NOT NULL,
-  `kd_kategori` varchar(50) NOT NULL,
-  `kategori` varchar(100) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `rangkuman` varchar(255) NOT NULL,
-  `isi` longtext NOT NULL,
-  `postdate` datetime NOT NULL
+  `kd_guru_mapel` varchar(50) DEFAULT NULL,
+  `kd_kategori` varchar(50) DEFAULT NULL,
+  `kategori` varchar(100) DEFAULT NULL,
+  `judul` varchar(100) DEFAULT NULL,
+  `rangkuman` varchar(255) DEFAULT NULL,
+  `isi` longtext DEFAULT NULL,
+  `postdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1915,12 +1922,12 @@ INSERT INTO `guru_mapel_news` (`kd`, `kd_guru_mapel`, `kd_kategori`, `kategori`,
 
 CREATE TABLE `guru_mapel_news_msg` (
   `kd` varchar(50) NOT NULL,
-  `kd_guru_mapel_news` varchar(50) NOT NULL,
-  `dari` varchar(50) NOT NULL,
-  `user_kode` varchar(100) NOT NULL,
-  `user_nama` varchar(100) NOT NULL,
-  `msg` varchar(255) NOT NULL,
-  `postdate` datetime NOT NULL
+  `kd_guru_mapel_news` varchar(50) DEFAULT NULL,
+  `dari` varchar(50) DEFAULT NULL,
+  `user_kode` varchar(100) DEFAULT NULL,
+  `user_nama` varchar(100) DEFAULT NULL,
+  `msg` varchar(255) DEFAULT NULL,
+  `postdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1960,19 +1967,19 @@ INSERT INTO `guru_mapel_news_msg` (`kd`, `kd_guru_mapel_news`, `dari`, `user_kod
 
 CREATE TABLE `guru_mapel_polling` (
   `kd` varchar(50) NOT NULL,
-  `kd_guru_mapel` varchar(50) NOT NULL,
-  `topik` varchar(100) NOT NULL,
-  `opsi1` varchar(50) NOT NULL,
-  `opsi2` varchar(50) NOT NULL,
-  `opsi3` varchar(50) NOT NULL,
-  `opsi4` varchar(50) NOT NULL,
-  `opsi5` varchar(50) NOT NULL,
+  `kd_guru_mapel` varchar(50) DEFAULT NULL,
+  `topik` varchar(100) DEFAULT NULL,
+  `opsi1` varchar(50) DEFAULT NULL,
+  `opsi2` varchar(50) DEFAULT NULL,
+  `opsi3` varchar(50) DEFAULT NULL,
+  `opsi4` varchar(50) DEFAULT NULL,
+  `opsi5` varchar(50) DEFAULT NULL,
   `nil_opsi1` varchar(5) NOT NULL DEFAULT '0',
   `nil_opsi2` varchar(5) NOT NULL DEFAULT '0',
   `nil_opsi3` varchar(5) NOT NULL DEFAULT '0',
   `nil_opsi4` varchar(5) NOT NULL DEFAULT '0',
   `nil_opsi5` varchar(5) NOT NULL DEFAULT '0',
-  `postdate` datetime NOT NULL
+  `postdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -2095,9 +2102,9 @@ INSERT INTO `guru_mapel_tugas` (`kd`, `kd_guru_mapel`, `topik`, `postdate`) VALU
 
 CREATE TABLE `guru_mapel_video` (
   `kd` varchar(50) NOT NULL,
-  `kd_guru_mapel` varchar(50) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `url` longtext NOT NULL,
+  `kd_guru_mapel` varchar(50) DEFAULT NULL,
+  `judul` varchar(100) DEFAULT NULL,
+  `url` longtext DEFAULT NULL,
   `postdate` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -2326,7 +2333,12 @@ INSERT INTO `siswa_soal` (`kd`, `kd_guru_mapel`, `jadwal_kd`, `siswa_kd`, `soal_
 ('89c4e41d99c8d833a7dc9c7a9b6d3ecc', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '32f96f84e657a153e106d56e3f3dbc01', 'B', '2020-07-29 07:48:41', 'C', 'false'),
 ('d30caf4b23d976732c2b81a71dfce065', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '666ead496869b35842dfc7c92df91558', 'C', '2020-07-29 07:48:44', 'C', 'true'),
 ('26594d04fb629937318be0a73cb4c8a9', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', 'c9a62f915fbe489e6a6dac7df71601ac', 'B', '2020-07-29 07:48:45', 'A', 'false'),
-('09e1606bfe43bdeb11d8bcc6805516e5', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '097b6d79067e10c3ea89ad6f425ee680', 'E', '2020-07-29 07:48:49', 'B', 'false');
+('09e1606bfe43bdeb11d8bcc6805516e5', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '097b6d79067e10c3ea89ad6f425ee680', 'E', '2020-07-29 07:48:49', 'B', 'false'),
+('f42ce2cf279e22e405fdae4a319b82aa', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', 'e4a51254462391714071eb21d0485f13', 'B', '2020-08-02 10:43:31', 'A', 'false'),
+('3aa589861352b7b7d1b1c0e0f3102390', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', '32f96f84e657a153e106d56e3f3dbc01', 'D', '2020-08-02 10:43:33', 'C', 'false'),
+('bee4ee4a2a1016d3b0ab26a20de6b8e4', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', '666ead496869b35842dfc7c92df91558', 'C', '2020-08-02 10:43:36', 'C', 'true'),
+('12af52a7df0461e328557f39e019ad77', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', 'c9a62f915fbe489e6a6dac7df71601ac', 'E', '2020-08-02 10:43:38', 'A', 'false'),
+('caca089e2131a4d1f80f719932d1e0e1', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', '097b6d79067e10c3ea89ad6f425ee680', 'B', '2020-08-02 10:43:41', 'B', 'true');
 
 -- --------------------------------------------------------
 
@@ -2358,7 +2370,8 @@ CREATE TABLE `siswa_soal_nilai` (
 INSERT INTO `siswa_soal_nilai` (`kd`, `kd_guru_mapel`, `jadwal_kd`, `siswa_kd`, `jml_benar`, `jml_salah`, `waktu_mulai`, `waktu_proses`, `waktu_akhir`, `skor`, `postdate`, `waktu_selesai`, `jml_soal_dikerjakan`, `selesai`) VALUES
 ('8f8056e7410f623b278f8ae2ea8aabd8', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'c8501a58dde52c15ac3ac56fbe669603', NULL, NULL, '2020-07-28 12:52:06', '2020-07-28 17:34:37', '2020-07-28 12:53:06', NULL, '2020-07-28 12:52:06', NULL, NULL, 'false'),
 ('f559be87eb35a0205406bf164fc1a156', '041c7cc5a8fb9320f6f3b538ce538b4c', '2f10197efe2e6ea52be9a59898f5bcb7', 'c8501a58dde52c15ac3ac56fbe669603', '3', '5', '2020-07-28 17:23:00', '2020-07-28 17:34:18', '2020-07-28 17:23:00', NULL, '2020-07-28 17:23:00', '2020-07-28 17:23:24', '8', 'true'),
-('31cd5d232a625319c71330e33dc6fb1e', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '1', '4', '2020-07-29 07:48:32', '2020-07-29 07:49:02', '2020-07-29 07:49:32', NULL, '2020-07-29 07:48:49', '2020-07-29 07:48:50', '5', 'true');
+('31cd5d232a625319c71330e33dc6fb1e', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', '193718556c9ea38a77468dedf9a57d7e', '1', '4', '2020-07-29 07:48:32', '2020-07-29 07:49:02', '2020-07-29 07:49:32', NULL, '2020-07-29 07:48:49', '2020-07-29 07:48:50', '5', 'true'),
+('ae7a46725c1d29f672833d21a9c0642f', '041c7cc5a8fb9320f6f3b538ce538b4c', '777dd00d4cdbd156b6362140d350de61', 'f4f5d296afead37410f18a6ca7bff265', '2', '3', '2020-08-02 10:43:26', '2020-08-02 10:43:54', '2020-08-02 10:45:26', NULL, '2020-08-02 10:43:41', '2020-08-02 10:43:42', '5', 'true');
 
 -- --------------------------------------------------------
 
@@ -3788,7 +3801,16 @@ INSERT INTO `user_blog_status` (`kd`, `kd_user`, `user_tipe`, `user_kode`, `user
 ('bb4a53470470c26f18e487511a5bb923', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', '[2020/2021. X TKJ 1]. Bahasa Inggris [ENTRI SOAL].', '2020-07-30 10:55:11', 'YA', '127.0.0.1'),
 ('b5b9e690b5a32c9abc97b822ba885a05', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', '[2020/2021. X TKJ 1]. Bahasa Inggris [ENTRI SOAL].', '2020-07-30 10:55:21', 'YA', '127.0.0.1'),
 ('56bf43b7687dcc698cb7e827208eae0c', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', '[2020/2021. X TKJ 1]. Bahasa Inggris [ENTRI SOAL].', '2020-07-30 10:55:23', 'YA', '127.0.0.1'),
-('c538dc2bcb1a821dd6e6c3cfb2f874ac', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', '[2020/2021. X TKJ 1]. Bahasa Inggris [ENTRI SOAL].', '2020-07-30 10:55:24', 'YA', '127.0.0.1');
+('c538dc2bcb1a821dd6e6c3cfb2f874ac', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', '[2020/2021. X TKJ 1]. Bahasa Inggris [ENTRI SOAL].', '2020-07-30 10:55:24', 'YA', '127.0.0.1'),
+('7e151edc7c4dce718dd5914e8c6ae338', '4a91033bfe52de0aedecd767ee4075c5', 'GURU', '170001', 'Orang BIASAWAE', 'Selamat Datang....', '2020-08-02 10:43:06', 'YA', '127.0.0.1'),
+('4e6485e76f8ce87ed5a89434bc0b315c', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', 'Selamat Datang....', '2020-08-02 10:43:13', 'YA', '127.0.0.1'),
+('4e6127ba3e99feaec665fc7ca94d8cfa', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [BERANDA].', '2020-08-02 10:43:16', 'YA', '127.0.0.1'),
+('b8c166f2dc46a5d86f272c1f908c9d41', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:43:22', 'YA', '127.0.0.1'),
+('5744ae60193bda00deae6b153afdadbf', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:43:26', 'YA', '127.0.0.1'),
+('7f8b8ea628c1509dfa3b11e71733c8eb', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:43:42', 'YA', '127.0.0.1'),
+('44db6b2b6ee449eac89818022e77fd11', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:43:48', 'YA', '127.0.0.1'),
+('80272425ac271383ca6677fc521f542c', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:43:54', 'YA', '127.0.0.1'),
+('da7e89efb05b90a3dea8f8313c088201', 'f4f5d296afead37410f18a6ca7bff265', 'SISWA', '280005', 'Orang TeknikNih', '[2020/2021. X TKJ 1]. Bahasa Inggris. [GURU : Orang BIASAWAE]. [FILE MATERI].', '2020-08-02 10:44:03', 'YA', '127.0.0.1');
 
 -- --------------------------------------------------------
 

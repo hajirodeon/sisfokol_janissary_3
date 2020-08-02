@@ -177,7 +177,7 @@ else
 							</p>
 							
 							<p>						
-							<a href="soal_kerjakan.php?gmkd='.$gmkd.'&jkd='.$u_jkd.'" class="btn btn-block btn-success">LIHAT REKAP ></a>
+							<a href="soal_rekap.php?gmkd='.$gmkd.'&jkd='.$u_jkd.'" class="btn btn-block btn-success">LIHAT REKAP ></a>
 							</p>
 							
 							<br>';

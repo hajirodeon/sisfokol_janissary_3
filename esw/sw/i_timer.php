@@ -58,7 +58,8 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu'))
 	
 	
 	//jadikan menit
-	$u_durasi2 = trim($u_durasi - 1); //90menit
+	//$u_durasi2 = trim($u_durasi - 1); //90menit
+	$u_durasi2 = trim($u_durasi); //90menit
 	 
 	$tujuan = date('H:i:s',strtotime($asal . '+'.$u_durasi2.' minutes'));
 	
@@ -109,6 +110,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu'))
 	//jalankan timer...
 	//echo "$ku_jamku. $ku_menitku. $ku_detikku";
 	//echo "$bulan2";
+	//echo "$asal -> $waktu_akhir";
 	?>
 	<p id="demo1"></p>
 	
@@ -211,7 +213,8 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu2'))
 	
 	
 	//jadikan menit
-	$u_durasi2 = trim($u_durasi - 1); //90menit
+	//$u_durasi2 = trim($u_durasi - 1); //90menit
+	$u_durasi2 = trim($u_durasi);
 	 
 	$tujuan = date('H:i:s',strtotime($asal . '+'.$u_durasi2.' minutes'));
 	
@@ -262,6 +265,8 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu2'))
 	//jalankan timer...
 	//echo "$ku_jamku. $ku_menitku. $ku_detikku";
 	//echo "$bulan2";
+	
+	//echo "$asal -> $waktu_akhir";
 	?>
 	<p id="demo2"></p>
 	
