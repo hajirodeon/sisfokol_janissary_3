@@ -19,7 +19,7 @@ echo '<div class="table-responsive">
 
 <td>
 
-<a href="dsiswa.php?gmkd='.$gmkd.'" title="SISWA" class="btn btn-primary">::SISWA</a>
+<a href="dsiswa.php?gmkd='.$gmkd.'" title="KEHADIRAN SISWA" class="btn btn-primary">::KEHADIRAN SISWA</a>
 
 </td>
 

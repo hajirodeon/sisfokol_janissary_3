@@ -13,7 +13,8 @@ nocache;
 //nilai
 $filenya = "guru.php";
 $judul = "Data Guru";
-$judulku = "[MASTER]. $judul";
+$judulku = "[$adm_session] ==> $judul";
+$judulku = "$judul";
 $judulx = $judul;
 $kd = nosql($_REQUEST['kd']);
 $s = nosql($_REQUEST['s']);
@@ -24,18 +25,6 @@ if ((empty($page)) OR ($page == "0"))
 	{
 	$page = "1";
 	}
-
-
-	
-require '../../inc/class/phpofficeexcel/vendor/autoload.php';
-
-
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-
-
 
 
 
@@ -66,7 +55,6 @@ if ($_POST['btnIMX'])
 	{
 	$filex_namex2 = strip(strtolower($_FILES['filex_xls']['name']));
 
-
 	//nek null
 	if (empty($filex_namex2))
 		{
@@ -79,9 +67,9 @@ if ($_POST['btnIMX'])
 	else
 		{
 		//deteksi .xls
-		$ext_filex = substr($filex_namex2, -5);
+		$ext_filex = substr($filex_namex2, -4);
 
-		if ($ext_filex == ".xlsx")
+		if ($ext_filex == ".xls")
 			{
 			//nilai
 			$path1 = "../../filebox";
@@ -90,11 +78,10 @@ if ($_POST['btnIMX'])
 			chmod($path2,0777);
 
 			//nama file import, diubah menjadi baru...
-			$filex_namex2 = "guru.xlsx";
+			$filex_namex2 = "guru.xls";
 
 			//mengkopi file
 			copy($_FILES['filex_xls']['tmp_name'],"../../filebox/excel/$filex_namex2");
-
 
 			//chmod
             $path3 = "../../filebox/excel/$filex_namex2";
@@ -104,7 +91,6 @@ if ($_POST['btnIMX'])
 
 			//file-nya...
 			$uploadfile = $path3;
-
 
 
 			//require
@@ -173,7 +159,6 @@ if ($_POST['btnIMX'])
 			unlink ($path1);
 
 
-
 			//re-direct
 			xloc($filenya);
 			exit();
@@ -195,32 +180,49 @@ if ($_POST['btnIMX'])
 //export
 if ($_POST['btnEX'])
 	{
+	//require
+	require('../../inc/class/excel/OLEwriter.php');
+	require('../../inc/class/excel/BIFFwriter.php');
+	require('../../inc/class/excel/worksheet.php');
+	require('../../inc/class/excel/workbook.php');
+
+
 	//nama file e...
-	$i_filename = "guru.xlsx";
+	$i_filename = "guru.xls";
 	$i_judul = "guru";
 	
 
 
-	$spreadsheet = new Spreadsheet();
-	$sheet = $spreadsheet->getActiveSheet();
-	$sheet->setCellValue('A1', 'NO');
-	$sheet->setCellValue('B1', 'NIP');
-	$sheet->setCellValue('C1', 'NAMA');
+
+	//header file
+	function HeaderingExcel($i_filename)
+		{
+		header("Content-type:application/vnd.ms-excel");
+		header("Content-Disposition:attachment;filename=$i_filename");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+		header("Pragma: public");
+		}
 
 	
-
 	
-		
+	
+	//bikin...
+	HeaderingExcel($i_filename);
+	$workbook = new Workbook("-");
+	$worksheet1 =& $workbook->add_worksheet($i_judul);
+	$worksheet1->write_string(0,0,"NO.");
+	$worksheet1->write_string(0,1,"NIP");
+	$worksheet1->write_string(0,2,"NAMA");
+
+
+
 	//data
 	$qdt = mysqli_query($koneksi, "SELECT * FROM m_user ".
 							"WHERE tipe = 'GURU' ".
 							"ORDER BY round(nomor) ASC");
 	$rdt = mysqli_fetch_assoc($qdt);
 
-	
-	$i = 2;		
-	$no = 1;
-	
 	do
 		{
 		//nilai
@@ -230,37 +232,16 @@ if ($_POST['btnEX'])
 
 
 		//ciptakan
-		$sheet->setCellValue('A'.$i, $no++);
-		$sheet->setCellValue('B'.$i, $dt_nis);
-		$sheet->setCellValue('C'.$i, $dt_nama);
-		$i++;
-
-
-
+		$worksheet1->write_string($dt_nox,0,$dt_nox);
+		$worksheet1->write_string($dt_nox,1,$dt_nis);
+		$worksheet1->write_string($dt_nox,2,$dt_nama);
 		}
 	while ($rdt = mysqli_fetch_assoc($qdt));
 
 
+	//close
+	$workbook->close();
 
-	//tulis
-	$targetfileku = "../../filebox/excel/$i_filename";
-	$writer = new Xlsx($spreadsheet);
-	$writer->save($targetfileku);
-		
-	
-
-
-		
-	//download
-	header('Content-Type: Application/vnd.ms-excel');
-	header('Content-Disposition: attachment; filename="'.$i_filename.'"');
-	$writer->save('php://output');
-		
-
-	//hapus file, jika telah import
-	$path1 = "../../filebox/excel/$i_filename";
-	chmod($path1,0777);
-	unlink ($path1);
 	
 	
 	//re-direct
@@ -356,10 +337,58 @@ if ($_POST['btnSMP'])
 		//jika update
 		if ($s == "edit")
 			{
+			//update
 			mysqli_query($koneksi, "UPDATE m_user SET nomor = '$e_nis', ".
 							"nama = '$e_nama' ".
 							"WHERE tipe = 'GURU' ".
 							"AND kd = '$kd'");
+
+
+
+	
+			//update guru_mapel_chatroom
+			mysqli_query($koneksi, "UPDATE guru_mapel_chatroom SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'GURU' ".
+							"AND kd_user = '$kd'");
+					
+					
+							
+			//update guru_mapel_log
+			mysqli_query($koneksi, "UPDATE guru_mapel_log SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'GURU' ".
+							"AND user_kd = '$kd'");
+							
+							
+			//update user_blog_msg : dari
+			mysqli_query($koneksi, "UPDATE user_blog_msg SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'GURU' ".
+							"AND kd_user = '$kd'");
+							
+			//update user_blog_msg : untuk
+			mysqli_query($koneksi, "UPDATE user_blog_msg SET uuser_kode = '$e_nis', ".
+							"uuser_nama = '$e_nama' ".
+							"WHERE uuser_tipe = 'GURU' ".
+							"AND untuk = '$kd'");
+							
+							
+			//update user_blog_status
+			mysqli_query($koneksi, "UPDATE user_blog_status SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'GURU' ".
+							"AND kd_user = '$kd'");
+							
+							
+			//update guru_mapel
+			mysqli_query($koneksi, "UPDATE guru_mapel SET user_nama = '$e_nama' ".
+							"WHERE user_kode = '$e_nis'");
+							
+														
+							
+														
+							
 
 			//re-direct
 			xloc($filenya);
@@ -390,7 +419,7 @@ if ($_POST['btnSMP'])
 			else
 				{
 				mysqli_query($koneksi, "INSERT INTO m_user(kd, usernamex, passwordx, tipe, nomor, nama, postdate) VALUES ".
-								"('$kd', '$i_userx', '$i_passx', 'GURU', '$e_nis', '$e_nama', '$today')");
+								"('$kd', 'GURU', '$i_userx', '$i_passx', '$e_nis', '$e_nama', '$today')");
 
 				//re-direct
 				xloc($filenya);
@@ -617,16 +646,19 @@ else
 	
 	
 	
-	echo '<form action="'.$filenya.'" method="post" name="formx">
+	echo '<form action="'.$filenya.'" method="post" name="formxx">
 	<p>
 	<input name="btnBARU" type="submit" value="ENTRI BARU" class="btn btn-danger">
 	<input name="btnIM" type="submit" value="IMPORT" class="btn btn-primary">
 	<input name="btnEX" type="submit" value="EXPORT" class="btn btn-success">
 	</p>
 	<br>
+	
+	</form>
 
 
 
+	<form action="'.$filenya.'" method="post" name="formx">
 	<p>
 	<input name="kunci" type="text" value="'.$kunci2.'" size="20" class="btn btn-warning" placeholder="Kata Kunci...">
 	<input name="btnCARI" type="submit" value="CARI" class="btn btn-danger">

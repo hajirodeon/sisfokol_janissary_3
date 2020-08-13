@@ -13,7 +13,8 @@ nocache;
 //nilai
 $filenya = "siswa.php";
 $judul = "Data Siswa";
-$judulku = "[MASTER]. $judul";
+$judulku = "[$adm_session] ==> $judul";
+$judulku = "$judul";
 $judulx = $judul;
 $kd = nosql($_REQUEST['kd']);
 $s = nosql($_REQUEST['s']);
@@ -24,23 +25,6 @@ if ((empty($page)) OR ($page == "0"))
 	{
 	$page = "1";
 	}
-
-
-
-
-	
-require '../../inc/class/phpofficeexcel/vendor/autoload.php';
-
-
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-
-
-
-
-
 
 
 
@@ -82,10 +66,10 @@ if ($_POST['btnIMX'])
 		}
 	else
 		{
-		//deteksi .xlsx
-		$ext_filex = substr($filex_namex2, -5);
+		//deteksi .xls
+		$ext_filex = substr($filex_namex2, -4);
 
-		if ($ext_filex == ".xlsx")
+		if ($ext_filex == ".xls")
 			{
 			//nilai
 			$path1 = "../../filebox";
@@ -94,7 +78,7 @@ if ($_POST['btnIMX'])
 			chmod($path2,0777);
 
 			//nama file import, diubah menjadi baru...
-			$filex_namex2 = "siswa.xlsx";
+			$filex_namex2 = "siswa.xls";
 
 			//mengkopi file
 			copy($_FILES['filex_xls']['tmp_name'],"../../filebox/excel/$filex_namex2");
@@ -197,7 +181,7 @@ if ($_POST['btnIMX'])
 		else
 			{
 			//salah
-			$pesan = "Bukan File .xlsx . Harap Diperhatikan...!!";
+			$pesan = "Bukan File .xls . Harap Diperhatikan...!!";
 			$ke = "$filenya?s=import";
 			pekem($pesan,$ke);
 			exit();
@@ -211,21 +195,43 @@ if ($_POST['btnIMX'])
 //export
 if ($_POST['btnEX'])
 	{
+	//require
+	require('../../inc/class/excel/OLEwriter.php');
+	require('../../inc/class/excel/BIFFwriter.php');
+	require('../../inc/class/excel/worksheet.php');
+	require('../../inc/class/excel/workbook.php');
+
+
 	//nama file e...
-	$i_filename = "siswa.xlsx";
+	$i_filename = "siswa.xls";
 	$i_judul = "Siswa";
 	
 
 
 
+	//header file
+	function HeaderingExcel($i_filename)
+		{
+		header("Content-type:application/vnd.ms-excel");
+		header("Content-Disposition:attachment;filename=$i_filename");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+		header("Pragma: public");
+		}
 
-	$spreadsheet = new Spreadsheet();
-	$sheet = $spreadsheet->getActiveSheet();
-	$sheet->setCellValue('A1', 'NO');
-	$sheet->setCellValue('B1', 'TAPEL');
-	$sheet->setCellValue('C1', 'KELAS');
-	$sheet->setCellValue('D1', 'NIS');
-	$sheet->setCellValue('E1', 'NAMA');
+	
+	
+	
+	//bikin...
+	HeaderingExcel($i_filename);
+	$workbook = new Workbook("-");
+	$worksheet1 =& $workbook->add_worksheet($i_judul);
+	$worksheet1->write_string(0,0,"NO.");
+	$worksheet1->write_string(0,1,"TAPEL");
+	$worksheet1->write_string(0,2,"KELAS");
+	$worksheet1->write_string(0,3,"NIS");
+	$worksheet1->write_string(0,4,"NAMA");
+
 
 
 	//data
@@ -235,9 +241,6 @@ if ($_POST['btnEX'])
 							"kelas_nama ASC, ".
 							"round(nomor) ASC");
 	$rdt = mysqli_fetch_assoc($qdt);
-
-	$i = 2;		
-	$no = 1;
 
 	do
 		{
@@ -250,38 +253,17 @@ if ($_POST['btnEX'])
 
 
 		//ciptakan
-		$sheet->setCellValue('A'.$i, $no++);
-		$sheet->setCellValue('B'.$i, $dt_tapel);
-		$sheet->setCellValue('C'.$i, $dt_kelas);
-		$sheet->setCellValue('D'.$i, $dt_nis);
-		$sheet->setCellValue('E'.$i, $dt_nama);
-		$i++;
-
+		$worksheet1->write_string($dt_nox,0,$dt_nox);
+		$worksheet1->write_string($dt_nox,1,$dt_tapel);
+		$worksheet1->write_string($dt_nox,2,$dt_kelas);
+		$worksheet1->write_string($dt_nox,3,$dt_nis);
+		$worksheet1->write_string($dt_nox,4,$dt_nama);
 		}
 	while ($rdt = mysqli_fetch_assoc($qdt));
 
 
-
-
-	//tulis
-	$targetfileku = "../../filebox/excel/$i_filename";
-	$writer = new Xlsx($spreadsheet);
-	$writer->save($targetfileku);
-		
-	
-
-
-		
-	//download
-	header('Content-Type: Application/vnd.ms-excel');
-	header('Content-Disposition: attachment; filename="'.$i_filename.'"');
-	$writer->save('php://output');
-		
-
-	//hapus file, jika telah import
-	$path1 = "../../filebox/excel/$i_filename";
-	chmod($path1,0777);
-	unlink ($path1);
+	//close
+	$workbook->close();
 
 	
 	
@@ -382,6 +364,7 @@ if ($_POST['btnSMP'])
 		//jika update
 		if ($s == "edit")
 			{
+			//update
 			mysqli_query($koneksi, "UPDATE m_user SET nomor = '$e_nis', ".
 							"nama = '$e_nama', ".
 							"tapel_kd = '$e_tapelkd', ".
@@ -390,6 +373,54 @@ if ($_POST['btnSMP'])
 							"kelas_nama = '$e_kelas' ".
 							"WHERE tipe = 'SISWA' ".
 							"AND kd = '$kd'");
+							
+							
+					
+			//update guru_mapel_tanya
+			mysqli_query($koneksi, "UPDATE guru_mapel_tanya SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE dari = '$kd'");
+					
+							
+			//update guru_mapel_chatroom
+			mysqli_query($koneksi, "UPDATE guru_mapel_chatroom SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'SISWA' ".
+							"AND kd_user = '$kd'");
+					
+					
+							
+			//update guru_mapel_log
+			mysqli_query($koneksi, "UPDATE guru_mapel_log SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'SISWA' ".
+							"AND user_kd = '$kd'");
+							
+							
+			//update user_blog_msg : dari
+			mysqli_query($koneksi, "UPDATE user_blog_msg SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'SISWA' ".
+							"AND kd_user = '$kd'");
+							
+			//update user_blog_msg : untuk
+			mysqli_query($koneksi, "UPDATE user_blog_msg SET uuser_kode = '$e_nis', ".
+							"uuser_nama = '$e_nama' ".
+							"WHERE uuser_tipe = 'SISWA' ".
+							"AND untuk = '$kd'");
+							
+							
+			//update user_blog_status
+			mysqli_query($koneksi, "UPDATE user_blog_status SET user_kode = '$e_nis', ".
+							"user_nama = '$e_nama' ".
+							"WHERE user_tipe = 'SISWA' ".
+							"AND kd_user = '$kd'");
+							
+							
+														
+							
+							
+							
 
 			//re-direct
 			xloc($filenya);
@@ -471,17 +502,23 @@ if ($_POST['btnHPS'])
 ob_start();
 
 
+//require
+require("../../template/js/jumpmenu.js");
+require("../../template/js/checkall.js");
+require("../../template/js/swap.js");
+?>
 
 
-//js
-require("../../inc/js/jumpmenu.js");
-require("../../inc/js/swap.js");
-require("../../inc/js/checkall.js");
-
-
-
-
-
+  
+  <script>
+  	$(document).ready(function() {
+    $('#table-responsive').dataTable( {
+        "scrollX": true
+    } );
+} );
+  </script>
+  
+<?php
 //view //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //jika import
 if ($s == "import")
@@ -699,7 +736,7 @@ else
 	
 	
 	
-	echo '<form action="'.$filenya.'" method="post" name="formx">
+	echo '<form action="'.$filenya.'" method="post" name="formxx">
 	<p>
 	<input name="btnBARU" type="submit" value="ENTRI BARU" class="btn btn-danger">
 	<input name="btnIM" type="submit" value="IMPORT" class="btn btn-primary">
@@ -707,9 +744,11 @@ else
 	</p>
 	<br>
 	
+	</form>
 
 
 
+	<form action="'.$filenya.'" method="post" name="formx">
 	<p>
 	<input name="kunci" type="text" value="'.$kunci2.'" size="20" class="btn btn-warning" placeholder="Kata Kunci...">
 	<input name="btnCARI" type="submit" value="CARI" class="btn btn-danger">
@@ -776,7 +815,7 @@ else
 	  </div>
 	
 	
-	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+	<table width="500" border="0" cellspacing="0" cellpadding="3">
 	<tr>
 	<td>
 	<strong><font color="#FF0000">'.$count.'</font></strong> Data. '.$pagelist.'
