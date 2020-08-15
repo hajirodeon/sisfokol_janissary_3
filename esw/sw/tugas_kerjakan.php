@@ -72,10 +72,18 @@ if ($_POST['btnUPL'])
 
 
 
-	//deteksi .zip
-	$ext_filex = substr($filex_namex, -4);
 
-	if ($ext_filex == ".zip")
+	//deteksi .zip/doc/ppt/xls/pdf/png/jpg
+	$ext_filex = substr($filex_namex, -4);
+	
+	//deteksi .docx/pptx/xlsx/jpeg
+	$ext_filex2 = substr($filex_namex, -5);
+
+
+	if (($ext_filex == ".zip") OR ($ext_filex == ".doc") OR ($ext_filex == ".ppt") 
+	OR ($ext_filex == ".xls") OR ($ext_filex == ".pdf") OR ($ext_filex == ".png") 
+	OR ($ext_filex == ".jpg") OR ($ext_filex2 == ".docx") OR ($ext_filex2 == ".pptx") 
+	OR ($ext_filex2 == ".xlsx") OR ($ext_filex2 == ".jpeg"))
 		{
 		//nek null
 		if (empty($filex_namex))
@@ -326,7 +334,7 @@ else
 				if (empty($tmboh))
 					{
 					echo '<p>
-					File Compress  .zip : 
+					File .zip/doc/docx/ppt/pptx/xls/xlsx/pdf/png/jpg/jpeg : 
 					<br>
 					<input name="filex" type="file" size="30">
 					</p>
