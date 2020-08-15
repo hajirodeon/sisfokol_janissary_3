@@ -28,18 +28,6 @@ if ((empty($page)) OR ($page == "0"))
 
 
 
-	
-require '../../inc/class/phpofficeexcel/vendor/autoload.php';
-
-
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-
-
-
-
 
 
 //PROSES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,10 +68,10 @@ if ($_POST['btnIMX'])
 		}
 	else
 		{
-		//deteksi .xlsx
-		$ext_filex = substr($filex_namex2, -5);
+		//deteksi .xls
+		$ext_filex = substr($filex_namex2, -4);
 
-		if ($ext_filex == ".xlsx")
+		if ($ext_filex == ".xls")
 			{
 			//nilai
 			$path1 = "../../filebox";
@@ -92,7 +80,7 @@ if ($_POST['btnIMX'])
 			chmod($path2,0777);
 
 			//nama file import, diubah menjadi baru...
-			$filex_namex2 = "gurumengajar.xlsx";
+			$filex_namex2 = "gurumengajar.xls";
 
 			//mengkopi file
 			copy($_FILES['filex_xls']['tmp_name'],"../../filebox/excel/$filex_namex2");
@@ -184,7 +172,7 @@ if ($_POST['btnIMX'])
 		else
 			{
 			//salah
-			$pesan = "Bukan File .xlsx . Harap Diperhatikan...!!";
+			$pesan = "Bukan File .xls . Harap Diperhatikan...!!";
 			$ke = "$filenya?s=import";
 			pekem($pesan,$ke);
 			exit();
@@ -198,23 +186,44 @@ if ($_POST['btnIMX'])
 //export
 if ($_POST['btnEX'])
 	{
+	//require
+	require('../../inc/class/excel/OLEwriter.php');
+	require('../../inc/class/excel/BIFFwriter.php');
+	require('../../inc/class/excel/worksheet.php');
+	require('../../inc/class/excel/workbook.php');
+
+		
+
 	//nama file e...
-	$i_filename = "gurumengajar.xlsx";
+	$i_filename = "gurumengajar.xls";
 	$i_judul = "gurumengajar";
 	
 
 
+	//header file
+	function HeaderingExcel($i_filename)
+		{
+		header("Content-type:application/vnd.ms-excel");
+		header("Content-Disposition:attachment;filename=$i_filename");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+		header("Pragma: public");
+		}
 
-
-	$spreadsheet = new Spreadsheet();
-	$sheet = $spreadsheet->getActiveSheet();
-	$sheet->setCellValue('A1', 'NO');
-	$sheet->setCellValue('B1', 'GURU_KODE');
-	$sheet->setCellValue('C1', 'GURU_NAMA');
-	$sheet->setCellValue('D1', 'TAPEL');
-	$sheet->setCellValue('E1', 'KELAS');
-	$sheet->setCellValue('F1', 'MAPEL_KODE');
-	$sheet->setCellValue('G1', 'MAPEL_NAMA');
+	
+	
+	
+	//bikin...
+	HeaderingExcel($i_filename);
+	$workbook = new Workbook("-");
+	$worksheet1 =& $workbook->add_worksheet($i_judul);
+	$worksheet1->write_string(0,0,"NO.");
+	$worksheet1->write_string(0,1,"GURU_KODE");
+	$worksheet1->write_string(0,2,"GURU_NAMA");
+	$worksheet1->write_string(0,3,"TAPEL");
+	$worksheet1->write_string(0,4,"KELAS");
+	$worksheet1->write_string(0,5,"MAPEL_KODE");
+	$worksheet1->write_string(0,6,"MAPEL_NAMA");
 
 	
 	
@@ -226,8 +235,6 @@ if ($_POST['btnEX'])
 							"mapel_kode ASC");
 	$rdt = mysqli_fetch_assoc($qdt);
 
-	$i = 2;		
-	$no = 1;
 
 	do
 		{
@@ -240,44 +247,22 @@ if ($_POST['btnEX'])
 		$dt_mapelkode = balikin($rdt['mapel_kode']);
 		$dt_mapelnama = balikin($rdt['mapel_nama']);
 
-
 		//ciptakan
-		$sheet->setCellValue('A'.$i, $no++);
-		$sheet->setCellValue('B'.$i, $dt_userkode);
-		$sheet->setCellValue('C'.$i, $dt_usernama);
-		$sheet->setCellValue('D'.$i, $dt_tapel);
-		$sheet->setCellValue('E'.$i, $dt_kelas);
-		$sheet->setCellValue('F'.$i, $dt_mapelkode);
-		$sheet->setCellValue('G'.$i, $dt_mapelnama);
-		$i++;
-
+		$worksheet1->write_string($dt_nox,0,$dt_nox);
+		$worksheet1->write_string($dt_nox,1,$dt_userkode);
+		$worksheet1->write_string($dt_nox,2,$dt_usernama);
+		$worksheet1->write_string($dt_nox,3,$dt_tapel);
+		$worksheet1->write_string($dt_nox,4,$dt_kelas);
+		$worksheet1->write_string($dt_nox,5,$dt_mapelkode);
+		$worksheet1->write_string($dt_nox,6,$dt_mapelnama);
 		}
 	while ($rdt = mysqli_fetch_assoc($qdt));
 
 
 
 
-	//tulis
-	$targetfileku = "../../filebox/excel/$i_filename";
-	$writer = new Xlsx($spreadsheet);
-	$writer->save($targetfileku);
-		
-	
-
-
-		
-	//download
-	header('Content-Type: Application/vnd.ms-excel');
-	header('Content-Disposition: attachment; filename="'.$i_filename.'"');
-	$writer->save('php://output');
-		
-
-	//hapus file, jika telah import
-	$path1 = "../../filebox/excel/$i_filename";
-	chmod($path1,0777);
-	unlink ($path1);
-
-
+	//close
+	$workbook->close();
 	
 	
 	//re-direct
