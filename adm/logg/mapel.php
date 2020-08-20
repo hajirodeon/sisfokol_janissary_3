@@ -12,7 +12,7 @@ nocache;
 
 //nilai
 $filenya = "mapel.php";
-$judul = "Log Mapel";
+$judul = "[LOG] Aktivitas";
 $judulku = "[$adm_session] ==> $judul";
 $judulku = "$judul";
 $judulx = $judul;
