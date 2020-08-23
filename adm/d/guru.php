@@ -654,11 +654,7 @@ else
 	</p>
 	<br>
 	
-	</form>
 
-
-
-	<form action="'.$filenya.'" method="post" name="formx">
 	<p>
 	<input name="kunci" type="text" value="'.$kunci2.'" size="20" class="btn btn-warning" placeholder="Kata Kunci...">
 	<input name="btnCARI" type="submit" value="CARI" class="btn btn-danger">
