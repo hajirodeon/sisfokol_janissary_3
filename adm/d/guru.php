@@ -418,7 +418,7 @@ if ($_POST['btnSMP'])
 				}
 			else
 				{
-				mysqli_query($koneksi, "INSERT INTO m_user(kd, usernamex, passwordx, tipe, nomor, nama, postdate) VALUES ".
+				mysqli_query($koneksi, "INSERT INTO m_user(kd, tipe, usernamex, passwordx, nomor, nama, postdate) VALUES ".
 								"('$kd', 'GURU', '$i_userx', '$i_passx', '$e_nis', '$e_nama', '$today')");
 
 				//re-direct
