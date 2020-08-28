@@ -7,6 +7,11 @@ SISFOKOL khusus E-Learning. Interaksi Guru dan Siswa.
 Dibuat dan dites dengan WebServer XAMPP PHP 7.4 . Pada LinuxMint.
 
 
+---
+
+<a href="presentasi_sisfokol_janissary.pdf">LIHAT PRESENTASI SISFOKOL-JANISSARY</a>
+
+
 
 
 Untuk konfigurasi, bisa set di file /inc/config.php
