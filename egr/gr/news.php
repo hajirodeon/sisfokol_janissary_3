@@ -58,6 +58,38 @@ else if ($bk == "news")
 
 
 
+
+
+
+
+//nilai
+$path1 = "../../filebox/materi/$gmkd";
+
+//cek, sudah ada belum
+if (!file_exists($path1))
+	{
+	mkdir("$path1", 0777);
+	}
+
+$firma_slug = "/$gmkd"; 
+$nilku = $_SERVER['REQUEST_URI'];
+
+//pecah
+$nilku2 = explode("/", $nilku);
+$nilku21 = $nilku2[1];
+
+
+$_SESSION["myRoxySession"] = "/$nilku21/filebox/materi".$firma_slug;
+
+
+
+
+
+
+
+
+
+
 //proses : GURU /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //bikin folder
 //jika baru

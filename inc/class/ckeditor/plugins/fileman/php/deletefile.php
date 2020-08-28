@@ -20,8 +20,6 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-
-/*
 include '../system.inc.php';
 include 'functions.inc.php';
 
@@ -39,6 +37,4 @@ if(is_file(fixPath($path))){
 }
 else
   echo getErrorRes(t('E_DeleteFileInvalidPath'));
- * 
- */
 ?>
