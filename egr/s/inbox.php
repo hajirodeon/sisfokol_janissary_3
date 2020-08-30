@@ -53,6 +53,40 @@ ob_start();
 
 
 
+//ketahui jumlah inbox, belum dibaca
+$qku = mysqli_query($koneksi, "SELECT * FROM user_blog_msg ".
+						"WHERE untuk = '$kd1_session' ".
+						"AND dibaca = 'false'");
+$tku = mysqli_num_rows($qku);
+
+echo $tku;
+
+
+
+
+
+//isi
+$isiprofil = ob_get_contents();
+ob_end_clean();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//isi *START
+ob_start();
+
+
+
 //view //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="row">
 <div class="col-lg-12">
@@ -110,11 +144,26 @@ echo '<div class="row">
 
 
 					$nomer = $nomer + 1;
+					$dt_kd = balikin($data['kd']);
 					$dt_usertipe = balikin($data['user_tipe']);
 					$dt_userkode = balikin($data['user_kode']);
 					$dt_usernama = balikin($data['user_nama']);
 					$dt_ket = balikin($data['msg']);
+					$dt_dibaca = balikin($data['dibaca']);
 					$dt_postdate = balikin($data['postdate']);
+
+					
+					//jika belum dibaca
+					if ($dt_dibaca == 'false')
+						{
+						//update telah dibaca
+						mysqli_query($koneksi, "UPDATE user_blog_msg SET dibaca = 'true', ".
+													"dibaca_postdate = '$today' ". 
+													"WHERE kd = '$dt_kd'");
+						}
+					
+
+
 
 					echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$e_warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
 					echo '<td>

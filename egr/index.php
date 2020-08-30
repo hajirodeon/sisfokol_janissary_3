@@ -69,19 +69,29 @@ if ($tcc == 0)
 
 
 
-
 //isi *START
 ob_start();
 
 
-//menu
-//require("i_profil.php");
-echo "$no1_session. $nm1_session";
+
+//ketahui jumlah inbox, belum dibaca
+$qku = mysqli_query($koneksi, "SELECT * FROM user_blog_msg ".
+						"WHERE untuk = '$kd1_session' ".
+						"AND dibaca = 'false'");
+$tku = mysqli_num_rows($qku);
+
+echo $tku;
+
+
+
 
 
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
+
+
+
 
 
 

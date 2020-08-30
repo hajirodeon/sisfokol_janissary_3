@@ -25,7 +25,7 @@ require("../inc/fungsi.php");
 require("../inc/koneksi.php");
 require("../inc/cek/janissari.php");
 require("../inc/class/paging.php");
-$tpl = LoadTpl("../template/esw.html");
+$tpl = LoadTpl("../template/esw_index.html");
 
 
 nocache;
@@ -69,14 +69,21 @@ if ($tcc == 0)
 
 
 
-
 //isi *START
 ob_start();
 
 
-//menu
-//require("i_profil.php");
-echo "$no1_session. $nm1_session";
+
+//ketahui jumlah inbox, belum dibaca
+$qku = mysqli_query($koneksi, "SELECT * FROM user_blog_msg ".
+						"WHERE untuk = '$kd1_session' ".
+						"AND dibaca = 'false'");
+$tku = mysqli_num_rows($qku);
+
+echo $tku;
+
+
+
 
 
 //isi
