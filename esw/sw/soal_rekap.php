@@ -68,6 +68,8 @@ if ($_POST['btnDF'])
 
 
 
+
+
 //isi *START
 ob_start();
 
@@ -88,6 +90,9 @@ echo $tku;
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
+
+
+
 
 
 
@@ -136,7 +141,7 @@ else
 		//nilai
 		$judul = "[$pel_tapel. $pel_kelas]. <br>$pel_nm. <br>[GURU : $pel_guru].";
 		$judulku = "[$tipe_session : $no1_session.$nm1_session] ==> $pel_nm. [GURU : $pel_guru].";
-		$filenya = "soal_rekap.php?gmkd=$gmkd&jkd=$jkd";
+		$filenya = "soal_kerjakan.php?gmkd=$gmkd&jkd=$jkd";
 		$juduli = $judul;
 
 
@@ -189,7 +194,7 @@ else
 	      <div class="box box-success">
 	        <div class="box-header">
 	
-	          <h3 class="box-title">REKAP JAWABAN</h3>
+	          <h3 class="box-title">KERJAKAN SOAL</h3>
 	        </div>
 	        
 	        
@@ -251,8 +256,9 @@ else
 					}
 				
 				?>
-
 				
+
+
 				
 				      <div class="row">
 				
@@ -326,9 +332,12 @@ else
 				        </div>
 				        <!-- /.col -->
 				
-				
-				
 
+				        
+				        
+				
+				
+				
 				
 				       </div>
 				      <!-- /.row -->
@@ -392,184 +401,180 @@ else
 				//yg dijawab
 				$xyzz = md5("$jkd$sesiku");
 				
-				
-				//insert
-				mysqli_query($koneksi, "INSERT INTO siswa_soal_nilai(kd, kd_guru_mapel, jadwal_kd, siswa_kd, waktu_mulai, postdate) VALUES ".
-								"('$xyzz', '$gmkd', '$jkd', '$sesiku', '$today', '$today')");
-				
+
 									
-
-
-
-
-				//hitung yg benar
-				$qyuk2 = mysqli_query($koneksi, "SELECT * FROM siswa_soal ".
-										"WHERE kd_guru_mapel = '$gmkd' ".
-										"AND siswa_kd = '$kd1_session' ".
-										"AND jadwal_kd = '$jkd' ".
-										"AND benar = 'true'");
-				$ryuk2 = mysqli_fetch_assoc($qyuk2);
-				$jml_benar = mysqli_num_rows($qyuk2);
-				$jml_salah = $tyuk7 - $jml_benar; 
-			
-				?>
-			
-			
-			
-			        <!-- /.col -->
-			        <div class="col-md-12 col-sm-6 col-xs-12">
-			          <div class="info-box">
-			            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-duplicate"></i></span>
-			
-			            <div class="info-box-content">
-			              <span class="info-box-text">Rekap Jawaban</span>
-			              <span class="info-box-number">
-			              [Benar : <font color="green"><?php echo $jml_benar;?></font>].
-			              [Salah : <font color="red"><?php echo $jml_salah;?></font>]. 
-			
-			              </span>
-			            </div>
-			            <!-- /.info-box-content -->
-			          </div>
-			          <!-- /.info-box -->
-			        </div>
-			        <!-- /.col -->
-			        
-			        
-			        
-			        
-			        
-			
-			        <!-- /.col -->
-			        <div class="col-md-12 col-sm-6 col-xs-12">
-			          <div class="info-box">
-			            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-hourglass"></i></span>
-			
-			            <div class="info-box-content">
-			              <span class="info-box-text">Waktu</span>
-			              <span class="info-box-number">
-			              Mulai : <font color="green"><?php echo $waktu_mulai;?></font>
-			              Selesai : <font color="red"><?php echo $waktu_selesai;?></font> 
-			
-			              </span>
-			            </div>
-			            <!-- /.info-box-content -->
-			          </div>
-			          <!-- /.info-box -->
-			        </div>
-			        <!-- /.col -->
-			        
-			        
-			        
-			        
-			        
-			        
-			        
-			    <?php    
-			    //query
-				$p = new Pager();
-				$start = $p->findStart($limit);
 				
-				$sqlcount = "SELECT * FROM guru_mapel_soal ".
-								"WHERE kd_guru_mapel = '$gmkd' ".
-								"AND jadwal_kd = '$jkd' ".
-								"ORDER BY round(no) ASC";
-				
-				$sqlresult = $sqlcount;
-				
-				$count = mysqli_num_rows(mysqli_query($koneksi, $sqlcount));
-				$pages = $p->findPages($count, $limit);
-				$result = mysqli_query($koneksi, "$sqlresult LIMIT ".$start.", ".$limit);
-				$target = $filenya;
-				$pagelist = $p->pageList($_GET['page'], $pages, $target);
-				$data = mysqli_fetch_array($result);
-				
-				
-				echo "&nbsp;";
-
-				echo '<div class="table-responsive">          
-				<table class="table" border="1">
-				<thead>
-				<tr valign="top" bgcolor="'.$e_warnaheader.'">
-				<td width="50"><strong><font color="'.$e_warnatext.'">NO</font></strong></td>
-				<td><strong><font color="'.$e_warnatext.'">DIJAWAB</font></strong></td>
-				</tr>
-				</thead>
-				<tbody>';
-						
-				
-				do 
+				//jika udah semua... ///////////////////////////////////////////////////////////////////////////////////
+				if (!empty($tyuk71))
 					{
-					if ($warna_set ==0)
-						{
-						$warna = $warna01;
-						$warna_set = 1;
-						}
-					else
-						{
-						$warna = $warna02;
-						$warna_set = 0;
-						}
-			
-					$nomer = $nomer + 1;
-					$i_kd = nosql($data['kd']);
-					$i_no = balikin($data['no']);
-					$i_kunci = balikin($data['kunci']);
-					$i_isi = balikin($data['isi']);
-					$i_postdate = balikin($data['postdate']);
-			
-					
-					//yg dijawab
-					$qyuk = mysqli_query($koneksi, "SELECT * FROM siswa_soal ".
+					//hitung yg benar
+					$qyuk2 = mysqli_query($koneksi, "SELECT * FROM siswa_soal ".
 											"WHERE kd_guru_mapel = '$gmkd' ".
-											"AND siswa_kd = '$sesiku' ".
+											"AND siswa_kd = '$kd1_session' ".
 											"AND jadwal_kd = '$jkd' ".
-											"AND soal_kd = '$i_kd'");
-					$ryuk = mysqli_fetch_assoc($qyuk);
-					mysqli_free_result($qyuk);
-					$yuk_kdku = nosql($ryuk['kd']);
-					$yuk_jawabku = balikin($ryuk['jawab']);
-					$yuk_benarnya = balikin($ryuk['benar']);
+											"AND benar = 'true'");
+					$ryuk2 = mysqli_fetch_assoc($qyuk2);
+					$jml_benar = mysqli_num_rows($qyuk2);
+					$jml_salah = $tyuk7 - $jml_benar; 
+				
+					?>
+				
+				
+				
+				        <!-- /.col -->
+				        <div class="col-md-12 col-sm-6 col-xs-12">
+				          <div class="info-box">
+				            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-duplicate"></i></span>
+				
+				            <div class="info-box-content">
+				              <span class="info-box-text">Rekap Jawaban</span>
+				              <span class="info-box-number">
+				              [Benar : <font color="green"><?php echo $jml_benar;?></font>].
+				              [Salah : <font color="red"><?php echo $jml_salah;?></font>]. 
+				
+				              </span>
+				            </div>
+				            <!-- /.info-box-content -->
+				          </div>
+				          <!-- /.info-box -->
+				        </div>
+				        <!-- /.col -->
+				        
+				        
+				        
+				        
+				        
+				
+				        <!-- /.col -->
+				        <div class="col-md-12 col-sm-6 col-xs-12">
+				          <div class="info-box">
+				            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-hourglass"></i></span>
+				
+				            <div class="info-box-content">
+				              <span class="info-box-text">Waktu</span>
+				              <span class="info-box-number">
+				              Mulai : <font color="green"><?php echo $waktu_mulai;?></font>
+				              Selesai : <font color="red"><?php echo $waktu_selesai;?></font> 
+				
+				              </span>
+				            </div>
+				            <!-- /.info-box-content -->
+				          </div>
+				          <!-- /.info-box -->
+				        </div>
+				        <!-- /.col -->
+				        
+				        
+				        
+				        
+				        
+				        
+				        
+				    <?php    
+				    //query
+					$p = new Pager();
+					$start = $p->findStart($limit);
+					
+					$sqlcount = "SELECT * FROM guru_mapel_soal ".
+									"WHERE kd_guru_mapel = '$gmkd' ".
+									"AND jadwal_kd = '$jkd' ".
+									"ORDER BY round(no) ASC";
+					
+					$sqlresult = $sqlcount;
+					
+					$count = mysqli_num_rows(mysqli_query($koneksi, $sqlcount));
+					$pages = $p->findPages($count, $limit);
+					$result = mysqli_query($koneksi, "$sqlresult LIMIT ".$start.", ".$limit);
+					$target = $filenya;
+					$pagelist = $p->pageList($_GET['page'], $pages, $target);
+					$data = mysqli_fetch_array($result);
 					
 					
-					
-					//jika gak null
-					if (!empty($yuk_jawabku))
-						{
-						//jika benar
-						if ($yuk_benarnya == "true")
-							{
-							$yuk_ket = "[<b><font color=green>BENAR</font></b>].";
-							}
-						else 
-							{
-							$yuk_ket = "[<font color=red>Salah</font>].";
-							}
-						}
-					
-					else
-						{
-						$yuk_ket = "";
-						}
-					
+					echo "&nbsp;";
 
-					echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$e_warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
-					echo '<td align="center">'.$i_no.'.</td>
-					<td>
-					'.$yuk_jawabku.' 
+					echo '<div class="table-responsive">          
+					<table class="table" border="1">
+					<thead>
+					<tr valign="top" bgcolor="'.$e_warnaheader.'">
+					<td width="50"><strong><font color="'.$e_warnatext.'">NO</font></strong></td>
+					<td><strong><font color="'.$e_warnatext.'">DIJAWAB</font></strong></td>
+					</tr>
+					</thead>
+					<tbody>';
+							
 					
-					'.$yuk_ket.'
-					</td>
-			        </tr>';
+					do 
+						{
+						if ($warna_set ==0)
+							{
+							$warna = $warna01;
+							$warna_set = 1;
+							}
+						else
+							{
+							$warna = $warna02;
+							$warna_set = 0;
+							}
+				
+						$nomer = $nomer + 1;
+						$i_kd = nosql($data['kd']);
+						$i_no = balikin($data['no']);
+						$i_kunci = balikin($data['kunci']);
+						$i_isi = balikin($data['isi']);
+						$i_postdate = balikin($data['postdate']);
+				
+						
+						//yg dijawab
+						$qyuk = mysqli_query($koneksi, "SELECT * FROM siswa_soal ".
+												"WHERE kd_guru_mapel = '$gmkd' ".
+												"AND siswa_kd = '$sesiku' ".
+												"AND jadwal_kd = '$jkd' ".
+												"AND soal_kd = '$i_kd'");
+						$ryuk = mysqli_fetch_assoc($qyuk);
+						mysqli_free_result($qyuk);
+						$yuk_kdku = nosql($ryuk['kd']);
+						$yuk_jawabku = balikin($ryuk['jawab']);
+						$yuk_benarnya = balikin($ryuk['benar']);
+						
+						
+						
+						//jika gak null
+						if (!empty($yuk_jawabku))
+							{
+							//jika benar
+							if ($yuk_benarnya == "true")
+								{
+								$yuk_ket = "[<b><font color=green>BENAR</font></b>].";
+								}
+							else 
+								{
+								$yuk_ket = "[<font color=red>Salah</font>].";
+								}
+							}
+						
+						else
+							{
+							$yuk_ket = "";
+							}
+						
+
+						echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$e_warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
+						echo '<td align="center">'.$i_no.'.</td>
+						<td>
+						'.$yuk_jawabku.' 
+						
+						'.$yuk_ket.'
+						</td>
+				        </tr>';
+						}
+					while ($data = mysqli_fetch_assoc($result));
+
+
+					echo '</tbody>
+				  	</table>
+				  	</div>';
 					}
-				while ($data = mysqli_fetch_assoc($result));
-
-
-				echo '</tbody>
-			  	</table>
-			  	</div>';
-
-
+				
 
 
 			echo '</div>

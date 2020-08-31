@@ -144,7 +144,6 @@ ob_end_clean();
 
 
 
-
 //isi *START
 ob_start();
 
@@ -247,15 +246,8 @@ else
 			echo '<form action="'.$filenya.'" method="post" name="formxx">
 			
 			<p>
-			JUDUL/NAMA/BAB : <b>'.$u_nama.'</b>
+			[<b>'.$u_nama.'</b>]. [<b>'.$u_durasi.' Menit</b>].
 			</p>
-			<br>
-			
-			<p>
-			Durasi : <b>'.$u_durasi.' Menit</b>
-			</p>
-			<br>
-			
 			
 			
 			
@@ -376,15 +368,7 @@ else
 					$mboh_total = $mboh_jml_benar + $mboh_jml_salah;
 					
 					//nilai
-					//jika null
-					if (empty($mboh_total))
-						{
-						$mboh_nilai = "-";	
-						}
-					else
-						{
-						$mboh_nilai = round(($mboh_jml_benar / $mboh_total) * 100,2);
-						}
+					$mboh_nilai = round(($mboh_jml_benar / $mboh_total) * 100,2);
 					
 					
 					echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$warnaover';\" onmouseout=\"this.bgColor='$warna';\">";

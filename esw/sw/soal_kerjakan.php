@@ -68,6 +68,8 @@ if ($_POST['btnDF'])
 
 
 
+
+
 //isi *START
 ob_start();
 
@@ -88,8 +90,6 @@ echo $tku;
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
-
-
 
 
 

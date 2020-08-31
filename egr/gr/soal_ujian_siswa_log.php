@@ -102,6 +102,8 @@ if ($_POST['btnCARI'])
 
 
 
+
+
 //isi *START
 ob_start();
 
@@ -122,11 +124,6 @@ echo $tku;
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
-
-
-
-
-
 
 
 
@@ -269,12 +266,10 @@ else
 				<p>
 				JUDUL/NAMA/BAB : <b>'.$u_nama.'</b>
 				</p>
-				<br>
 				
 				<p>
 				Durasi : <b>'.$u_durasi.' Menit</b>
 				</p>
-				<br>
 				
 				
 				

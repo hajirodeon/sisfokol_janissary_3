@@ -74,6 +74,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu'))
 
 	//update waktu akhir
 	$waktu_akhir = "$tahun-$bulan-$tanggal $tujuan_jam:$tujuan_menit:$tujuan_detik";
+	$tujuan_akhir = "$tujuan_jam:$tujuan_menit:$tujuan_detik";
 	
 	mysqli_query($koneksi, "UPDATE siswa_soal_nilai SET waktu_akhir = '$waktu_akhir' ".
 					"WHERE siswa_kd = '$skd' ".
@@ -110,7 +111,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu'))
 	//jalankan timer...
 	//echo "$ku_jamku. $ku_menitku. $ku_detikku";
 	//echo "$bulan2";
-	//echo "$asal -> $waktu_akhir";
+	//echo "$tujuan_akhir";
 	?>
 	<p id="demo1"></p>
 	
@@ -214,7 +215,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu2'))
 	
 	//jadikan menit
 	//$u_durasi2 = trim($u_durasi - 1); //90menit
-	$u_durasi2 = trim($u_durasi);
+	$u_durasi2 = trim($u_durasi); //90menit
 	 
 	$tujuan = date('H:i:s',strtotime($asal . '+'.$u_durasi2.' minutes'));
 	
@@ -265,8 +266,6 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'sisawaktu2'))
 	//jalankan timer...
 	//echo "$ku_jamku. $ku_menitku. $ku_detikku";
 	//echo "$bulan2";
-	
-	//echo "$asal -> $waktu_akhir";
 	?>
 	<p id="demo2"></p>
 	

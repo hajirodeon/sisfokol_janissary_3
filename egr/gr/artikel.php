@@ -49,7 +49,7 @@ if ((empty($page)) OR ($page == "0"))
 
 
 //nilai
-$path1 = "../../filebox/materi/$gmkd";
+$path1 = "../../filebox/artikel/$gmkd";
 
 //cek, sudah ada belum
 if (!file_exists($path1))
@@ -65,7 +65,7 @@ $nilku2 = explode("/", $nilku);
 $nilku21 = $nilku2[1];
 
 
-$_SESSION["myRoxySession"] = "/$nilku21/filebox/materi".$firma_slug;
+$_SESSION["myRoxySession"] = "/$nilku21/filebox/artikel".$firma_slug;
 
 
 
@@ -98,12 +98,12 @@ else if ($bk == "artikel")
 if ($s == "baru")
 	{
 	//nilai
-	$path1 = "../../filebox/e/artikel/$artkd";
+	$path1 = "../../filebox/artikel/$artkd";
 
 	//cek, sudah ada belum
 	if (!file_exists($path1))
 		{
-		mkdir("$path1", $chmod);
+		mkdir("$path1", 0777);
 		}
 	}
 
@@ -129,7 +129,7 @@ if (($s == "hapus") AND (!empty($artkd)))
 		{
 		//hapus file
 		$cc_filex = $rcc['filex'];
-		$path1 = "../../filebox/e/artikel/$artkd/$cc_filex";
+		$path1 = "../../filebox/artikel/$artkd/$cc_filex";
 		unlink ($path1);
 		}
 	while ($rcc = mysqli_fetch_assoc($qcc));
@@ -142,7 +142,7 @@ if (($s == "hapus") AND (!empty($artkd)))
 	if (!empty($artkd))
 		{
 		//hapus folder
-		$path2 = "../../filebox/e/artikel/$artkd";
+		$path2 = "../../filebox/artikel/$artkd";
 		delete ($path2);
 		}
 

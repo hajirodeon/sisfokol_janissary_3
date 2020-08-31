@@ -49,7 +49,55 @@ $kunci2 = balikin($_REQUEST['kunci']);
 $skd = nosql($_REQUEST['skd']);
 
 
-$limit = 10;
+$limit = 100;
+
+
+
+//nilai
+$path1 = "../../filebox/soal/$skd";
+$path12 = "../../filebox/soal/$skd/$kd";
+$path11 = "../../filebox/soal";
+chmod("$path11", 0777);
+chmod("$path12", 0777);
+
+//cek, sudah ada belum
+if (!file_exists($path1))
+	{
+	mkdir("$path1", 0777);
+	chmod("$path11", 0755);
+	chmod("$path1", 0777);
+	}
+
+
+//cek, sudah ada belum
+if (!file_exists($path12))
+	{
+	mkdir("$path12", 0777);
+	chmod("$path1", 0777);
+	chmod("$path12", 0777);
+	}
+
+
+
+
+
+
+
+$firma_slug = "/$kd"; 
+$nilku = $_SERVER['REQUEST_URI'];
+
+//pecah
+$nilku2 = explode("/", $nilku);
+$nilku21 = $nilku2[1];
+$nilku22 = $nilku2[2];
+
+
+//$_SESSION["myRoxySession"] = "/$nilku21/$nilku22/filebox/soal/$skd".$firma_slug;
+$_SESSION["myRoxySession"] = "/$nilku21/filebox/soal/$skd".$firma_slug;
+
+
+
+
 
 
 //PROSES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,7 +200,7 @@ if ($_POST['btnIMX'])
 				      // sedangkan alamat ada di kolom B
 				      $i_xyz = md5("$x$i");
 				      $i_no = cegah($sheet['A']);
-				      $i_isi = cegah($sheet['B']);
+				      $i_isi = nl2br(cegah2($sheet['B']));
 				      $i_kunci = cegah($sheet['C']);
 					  
 						//cek
@@ -248,8 +296,8 @@ if ($_POST['btnEX'])
 							"WHERE kd_guru_mapel = '$gmkd' ".
 							"AND kd = '$skd'");
 	$rku = mysqli_fetch_assoc($qku);
-	$u_nama = balikin($rku['nama']);
-	$u_durasi = balikin($rku['durasi']);
+	$u_nama = seo_friendly_url(balikin($rku['nama']));
+
 	
 	
 	
@@ -286,7 +334,7 @@ if ($_POST['btnEX'])
 
 	//data
 	$qdt = mysqli_query($koneksi, "SELECT * FROM guru_mapel_soal ".
-							"WHERE guru_mapel_soal = '$gmkd' ".
+							"WHERE kd_guru_mapel = '$gmkd' ".
 							"AND jadwal_kd = '$skd' ".
 							"ORDER BY round(no) ASC");
 	$rdt = mysqli_fetch_assoc($qdt);
@@ -296,8 +344,8 @@ if ($_POST['btnEX'])
 		//nilai
 		$dt_nox = $dt_nox + 1;
 		$dt_no = balikin($rdt['no']);
-		$dt_isi = trim(balikin($rdt['isi']));
-		$dt_kunci = balikin($rdt['kunci']);
+		$dt_isi = strip_tags(balikin($rdt['isi']));
+		$dt_kunci = strip_tags(balikin($rdt['kunci']));
 
 
 
@@ -460,6 +508,84 @@ if ($_POST['btnSMP'])
 
 
 
+
+
+
+
+
+//jika simpan + entri baru
+if ($_POST['btnSMP2'])
+	{
+	$gmkd = nosql($_POST['gmkd']);
+	$skd = nosql($_POST['skd']);
+	$s = nosql($_POST['s']);
+	$kd = nosql($_POST['kd']);
+	$page = nosql($_POST['page']);
+	$e_no = cegah($_POST['e_no']);
+	$editor = cegah2($_POST['editor']);
+	$e_kunci = cegah($_POST['e_kunci']);
+
+	//nek null
+	if ((empty($e_no)) OR (empty($editor)) OR (empty($e_kunci)))
+		{
+		//re-direct
+		$pesan = "Belum Ditulis. Harap Diulangi...!!";
+		$ke = "$filenya&skd=$skd&s=$s&kd=$kd";
+		pekem($pesan,$ke);
+		exit();
+		}
+	else
+		{
+		//jika baru
+		if ($s == "baru")
+			{
+			//cek
+			$qcc = mysqli_query($koneksi, "SELECT * FROM guru_mapel_soal ".
+									"WHERE kd_guru_mapel = '$gmkd' ".
+									"AND jadwal_kd = '$skd' ".
+									"AND no = '$e_no'");
+			$rcc = mysqli_fetch_assoc($qcc);
+			$tcc = mysqli_num_rows($qcc);
+
+			//nek ada
+			if ($tcc != 0)
+				{
+				//re-direct
+				$pesan = "Sudah Ada. Silahkan Ganti Yang Lain...!!";
+				$ke = "$filenya&skd=$skd&s=baru&kd=$kd";
+				pekem($pesan,$ke);
+				exit();
+				}
+			else
+				{
+				//insert
+				mysqli_query($koneksi, "INSERT INTO guru_mapel_soal(kd, kd_guru_mapel, jadwal_kd, no, isi, kunci, postdate) VALUES ".
+								"('$kd', '$gmkd', '$skd', '$e_no', '$editor', '$e_kunci', '$today')");
+
+				//re-direct
+				$ke = "$filenya&skd=$skd&s=baru&kd=$x";
+				xloc($ke);
+				exit();
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //jika hapus
 if ($_POST['btnHPS'])
 	{
@@ -518,8 +644,6 @@ echo $tku;
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
-
-
 
 
 
@@ -675,7 +799,17 @@ else
 				
 				<input name="btnBTL" type="submit" value="BATAL" class="btn btn-primary">
 				<input name="btnSMP" type="submit" value="SIMPAN >>" class="btn btn-danger">
-				</p>
+				';
+				
+				
+				//simpan dan entri baru
+				if ($s == "baru")
+					{
+					echo '<input name="btnSMP2" type="submit" value="SIMPAN + ENTRI BARU >>" class="btn btn-danger">';
+					}
+				
+				
+				echo '</p>
 				
 				
 				</form>';
@@ -703,10 +837,50 @@ else
 				<?php
 				}
 				
+				
+				
+				
+				
+
+
+			
+			//jika import
+			else if ($s == "import")
+				{
+				?>
+				<div class="row">
+			
+				<div class="col-md-12">
+					
+				<?php
+				echo '<form action="'.$filenya.'" method="post" enctype="multipart/form-data" name="formxx2">
+				<p>
+					<input name="filex_xls" type="file" size="30" class="btn btn-warning">
+				</p>
+			
+				<p>
+					<input name="s" type="hidden" value="'.$s.'">
+					<input name="skd" type="hidden" value="'.$skd.'">
+					<input name="gmkd" type="hidden" value="'.$gmkd.'">
+					<input name="btnBTL" type="submit" value="BATAL" class="btn btn-info">
+					<input name="btnIMX" type="submit" value="IMPORT >>" class="btn btn-danger">
+				</p>
+				
+				
+				</form>';	
+				?>
+					
 			
 			
+				</div>
+				
+				</div>
 			
 			
+				<?php
+				}
+
+
 			
 			
 			else
@@ -740,7 +914,7 @@ else
 				$count = mysqli_num_rows(mysqli_query($koneksi, $sqlcount));
 				$pages = $p->findPages($count, $limit);
 				$result = mysqli_query($koneksi, "$sqlresult LIMIT ".$start.", ".$limit);
-				$target = "$filenya&skd=$skd";
+				$target = $filenya;
 				$pagelist = $p->pageList($_GET['page'], $pages, $target);
 				$data = mysqli_fetch_array($result);
 				
@@ -754,6 +928,7 @@ else
 				$rku = mysqli_fetch_assoc($qku);
 				$u_nama = balikin($rku['nama']);
 				$u_durasi = balikin($rku['durasi']);
+				$u_aktif = balikin($rku['aktif']);
 				
 				
 				
@@ -773,30 +948,32 @@ else
 				
 				echo '<form action="'.$filenya.'" method="post" name="formxx">
 				
+				<input name="btnDF" type="submit" value="<< LIHAT JUDUL/NAMA/BAB LAIN" class="btn btn-danger">
+				<hr>
+				<br>
 				
 				<p>
-				Nama/Judul/Bab :
-				<br>
 				<b>'.$u_nama.'</b>
 				</p>
-				<br>
-				
-				
+								
 				<p>
 				[Durasi Pengerjaan : <b>'.$u_durasi.' Menit</b>].
 				</p>
-				<br>
 				
 				<p>
 				<input name="skd" type="hidden" value="'.$skd.'">
 				<input name="gmkd" type="hidden" value="'.$gmkd.'">
-				<input name="btnBARU" type="submit" value="ENTRI BARU" class="btn btn-danger">
-				<input name="btnDF" type="submit" value="LIHAT JUDUL/NAMA/BAB LAIN >" class="btn btn-danger">
+				<input name="btnIM" type="submit" value="IMPORT SOAL >>" class="btn btn-danger">
+				<input name="btnEX" type="submit" value="EXPORT SOAL >>" class="btn btn-danger">
+				<input name="btnBARU" type="submit" value="ENTRI BARU >>" class="btn btn-danger">
 				</p>
 				<br>
 				
 
+
+
 				<p>
+				<input name="gmkd" type="hidden" value="'.$gmkd.'">
 				<input name="kunci" type="text" value="'.$kunci2.'" size="20" class="btn btn-warning" placeholder="Kata Kunci...">
 				<input name="btnCARI" type="submit" value="CARI" class="btn btn-danger">
 				<input name="btnBTL" type="submit" value="RESET" class="btn btn-info">

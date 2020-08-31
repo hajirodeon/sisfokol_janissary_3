@@ -133,6 +133,7 @@ ob_end_clean();
 
 
 
+
 //isi *START
 ob_start();
 
@@ -240,16 +241,9 @@ else
 				echo '<form action="'.$filenya.'" method="post" name="formxx">
 				
 				<p>
-				JUDUL/NAMA/BAB : <b>'.$u_nama.'</b>
+				[<b>'.$u_nama.'</b>]. [<b>'.$u_durasi.' Menit</b>].
 				</p>
-				<br>
 				
-				<p>
-				Durasi : <b>'.$u_durasi.' Menit</b>
-				</p>
-				<br>
-				
-
 				
 				<p>
 				<input name="gmkd" type="hidden" value="'.$gmkd.'">
@@ -382,15 +376,7 @@ else
 							
 							
 						//nilainya..
-						//jika empty
-						if (empty($mboh_dikerjakan))
-							{
-							$nilaiku = "-";	
-							}
-						else
-							{
-							$nilaiku = ($mboh_benar / $mboh_dikerjakan) * 100;
-							}
+						$nilaiku = ($mboh_benar / $mboh_dikerjakan) * 100;
 						
 						
 

@@ -31,6 +31,8 @@ $tpl = LoadTpl("../../template/esw.html");
 nocache;
 
 
+date_default_timezone_set('Asia/Makassar');
+
 
 //nilai
 $s = nosql($_REQUEST['s']);

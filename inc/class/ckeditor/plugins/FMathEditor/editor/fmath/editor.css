@@ -1,0 +1,90 @@
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	float: left;
+	padding: 2px 8px;
+	text-decoration: none;
+}
+
+.ui-widget {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 13px;
+}
+.ui-tabs .ui-tabs-nav {
+	padding: 0;
+}
+.ui-tabs .ui-tabs-panel {
+	padding: 1px;
+}
+.ui-button {
+	padding: 0px;
+	vertical-align: top;
+}
+select {
+	vertical-align: top;
+}
+.sp-replacer {
+	padding:1px;
+	vertical-align: top;
+}
+.sp-preview {
+	width:19px;
+	height:19px;
+}
+.ui-title {
+	padding:2px;
+	float: left;
+	width:99%;
+	margin:2px;
+	font-size:85%;
+}
+.ui-accordion .ui-accordion-header {
+	padding:2px;
+	text-align:left;
+	width:99%;
+}
+
+.ui-dialog{
+	z-index:1000 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	padding:2px 15px;
+}
+
+.CodeMirror {
+	height: auto;
+}
+
+.flyingInputText{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	padding:0px !important;
+}
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+}
+
+div[type="normalButton"]  {
+	padding: .4em 3em; 
+	vertical-align: middle;
+}
+
+.ui-accordion .ui-accordion-content {
+    	padding: 0  !important;
+}
+
+input[class="selectFontSize"]{
+	padding:3px !important;
+}
+
+input{
+	padding:2px !important;
+}
+
+option{
+	padding: 0px !important;
+	margin: 0px !important;
+}
+

@@ -1,0 +1,126 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+
+	<link href="w2ui-1.4.3/w2ui-1.4.3.css" rel="stylesheet" >
+	<script src="w2ui-1.4.3/w2ui-1.4.3.min.js"></script>
+
+	<link href="codemirror/lib/codemirror.css" rel="stylesheet" >
+	<script src="codemirror/lib/codemirror.js"></script>
+	<script src="codemirror/mode/xml/xml.js"></script>
+	<script src="codemirror/mode/stex/stex.js"></script>
+	<script src="codemirror/addon/selection/active-line.js"></script>
+
+	<link href="spectrum/spectrum.css" rel="stylesheet" >
+	<script src="spectrum/spectrum.js"></script>
+
+	<link href="fmath/editor.css" rel="stylesheet" >
+	<script src="fmath/lang/en.js"></script>
+	<script src="fmath/fonts/fmathFormulaFonts.js"></script>
+	<script src="fmath/fmathEditorC.js"></script>
+	<script src="fmath/fmathEditorJQuery.js"></script>
+
+</head>
+<body>
+<input type="button" onclick="changeMathML()" value="Change MathML"/>
+<input type="button" onclick="getMathML_CHARS()" value="Get MathML Char"/>
+<input type="button" onclick="getMathML_ENTITIES()" value="Get MathML Entities"/>
+<input type="button" onclick="getMathML_UNICODE()" value="Get MathML Unicode"/>
+<input type="button" onclick="setLatex()" value="Set Latex"/>
+<input type="button" onclick="getLatex()" value="Get Latex"/>
+<input type="button" onclick="getPng()" value="Get Image Png"/>
+<br/>
+<table>
+	<tr>
+		<td>Mathml:</td>
+		<td>
+<textarea id="textarea" style='width:300px; height:50px'>
+&lt;math mathsize='40'&gt;
+	&lt;mtext&gt;AB&lt;/mtext&gt;
+	&lt;mo&gt;&#xB1;&lt;/mo&gt;
+	&lt;mtext&gt;CD&lt;/mtext&gt;
+&lt;/math&gt;
+</textarea>
+		</td>
+		<td>Latex:</td>
+		<td>
+<textarea id="textareaL" style='width:300px; height:50px'>\[x^2+2x+1\]</textarea>
+		</td>
+	</tr>
+</table>
+<br/>
+Image:<input id="text"/><br/>
+<img id="image"/>
+<center>
+	<div id="editor1"></div>
+	<br/>
+</center>
+
+<script>
+	var e1 = $( "#editor1" ).mathEditor({ width: 1000, height:400});
+	e1.mathEditor("setSaveCallback", clientSaveMethod);
+	//e1.mathEditor("setMathML","<math mathsize='40'><mi>X</mi><mo>+</mo><mi>Y</mi></math>");
+
+	function clientSaveMethod(){
+		// get info from editor ex: get image
+		getPng();
+	}
+
+	function setLatex(){
+		if(e1 != null){
+			var ta = document.getElementById("textareaL");
+			e1.mathEditor("setLatex", ta.value);
+		}
+	}
+
+	function getLatex(){
+		if(e1 !=null){
+			alert(e1.mathEditor("getLatex"));
+		}
+	}
+
+	function changeMathML(){
+		if(e1 != null){
+			var ta = document.getElementById("textarea");
+			e1.mathEditor("setMathML", ta.value);
+		}
+	}
+
+	function getMathML_CHARS(){
+		if(e1 !=null){
+			// type could be CHARS, ENTITIES or UNICODE;
+			alert(e1.mathEditor("getMathML", "CHARS", "true"));
+		}
+	}
+
+	function getMathML_ENTITIES(){
+		if(e1 !=null){
+			// type could be CHARS, ENTITIES or UNICODE;
+			alert(e1.mathEditor("getMathML", "ENTITIES", "true"));
+		}
+	}
+	function getMathML_UNICODE(){
+		if(e1 !=null){
+			// type could be CHARS, ENTITIES or UNICODE;
+			alert(e1.mathEditor("getMathML", "UNICODE", "true"));
+		}
+	}
+	function getPng(){
+		if(e1 !=null){
+			var img = document.getElementById("image");
+			var elem = document.getElementById("text");
+			img.src = e1.mathEditor("getImage","png");
+			elem.value = img.src;
+		}
+	}
+
+</script>
+
+</body>
+</html>
