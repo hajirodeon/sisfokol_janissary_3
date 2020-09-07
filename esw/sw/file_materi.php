@@ -40,7 +40,6 @@ $filenya = "file_materi.php?gmkd=$gmkd";
 
 
 
-
 //isi *START
 ob_start();
 
@@ -61,8 +60,6 @@ echo $tku;
 //isi
 $isiprofil = ob_get_contents();
 ob_end_clean();
-
-
 
 
 
@@ -175,7 +172,7 @@ else
 						<br>
 						PostDate : <strong>'.$fle_postdate.'</strong>
 						<br>
-						[<a href="'.$file_path.'" title="Download" target="_blank">Download</a>].
+						[<a href="../../filebox/materi/'.$gmkd.'/'.$fle_kd.'/'.$file_path.'" title="Download" target="_blank">Download</a>].
 						</LI>
 						<br><br>';
 						}
