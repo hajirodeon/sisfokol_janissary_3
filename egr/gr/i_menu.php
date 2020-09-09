@@ -24,6 +24,16 @@ echo '<div class="table-responsive">
 </td>
 
 
+
+<td>
+
+<a href="papan_tulis.php?gmkd='.$gmkd.'" title="PAPAN TULIS" class="btn btn-primary">::PAPAN TULIS</a>
+
+</td>
+
+
+
+
 <td>
 
 <a href="news.php?gmkd='.$gmkd.'" title="BERITA" class="btn btn-primary">::BERITA</a>

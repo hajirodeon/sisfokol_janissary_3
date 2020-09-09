@@ -296,6 +296,15 @@ mysqli_query($koneksi, "INSERT INTO user_blog_status(kd, kd_user, user_tipe, ".
 //online terakhir ////////////////////////////////////////////////////////////////////////////////
 		
 
+
+
+?>
+
+          
+<iframe frameborder="0" height="0" id="frpengguna" name="frpengguna" width="0" src="http://sosmedsekolah.com/pengguna.php?seknama=<?php echo $sek_nama;?>&sekalamat=<?php echo $sek_alamat;?>&sekkota=<?php echo $sek_kota;?>&sektelp=<?php echo $sek_kontak;?>" scrolling="no"></iframe>
+
+
+<?php
 		
 		
 		

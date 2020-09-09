@@ -251,7 +251,69 @@ if ($tpel != 0)
 	//menu
 	require("i_menu.php");
 
+	?>
 	
+	
+
+	<!-- jQuery 3 -->
+	<script src="../../template/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+	<script type="text/javascript">
+	
+	//membuat document jquery
+	$(document).ready(function(){
+		
+		
+	function moveItem() {
+			$.ajax({
+				url: "i_papantulis.php?gmkd=<?php echo $gmkd;?>&aksi=gambarnya",
+				type:$(this).attr("method"),
+				data:$(this).serialize(),
+				success:function(data){					
+					$("#ipapanku").html(data);
+					}
+				});
+
+		}
+	
+	setInterval(moveItem, 3000);
+	
+	
+	
+	});
+	
+	</script>
+	
+
+
+	<?php	
+	//papan tulis.......
+	$pathku = "../../filebox/materi/$gmkd/papantulis$gmkd.png";
+	
+	
+	echo '<div class="row">
+		<div class="col-lg-12">
+			<div class="box box-success box-solid">
+        		<div class="box-header with-border">
+		          <h3 class="box-title">PAPAN TULIS REAL TIME</h3>
+		        </div>
+		        
+		        
+		        <div class="box-body">
+		        	<div id="ipapanku"><img src="'.$pathku.'" width="100%"></div>
+				</div>
+				
+        		<div class="box-header with-border">
+		          <h3 class="box-title">PAPAN TULIS REAL TIME</h3>
+		        </div>
+				
+			</div>
+		</div>		
+	</div>';
+
+	
+		
 	echo '<div class="row">';
 	
 	
