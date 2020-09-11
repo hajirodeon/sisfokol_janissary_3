@@ -9,14 +9,27 @@ Dibuat dan dites dengan WebServer XAMPP PHP 7.4 . Pada LinuxMint.
 
 ---
 
+<a href="http://sosmedsekolah.com" target="_blank">BELI VERSI DONASI</a>
+
+
+---
+
 <a href="presentasi_sisfokol_janissary.pdf">LIHAT PRESENTASI SISFOKOL-JANISSARY</a>
 
 
+---
+
+INSTALASI DAN KONFIGURASI :  
+
+1. Ekstrak file web ke folder web webserver www atau htdocs
+
+2. Untuk konfigurasi, bisa set di file /inc/config.php
+
+3. Jalankan phpmyadmin, buatlah sebuah database. dan lakukan import file database .sql, ada di folder /db
+
+4. Jalankan SISFOKOL-JANISSARY sesuai alamat web yang ada.
 
 
-Untuk konfigurasi, bisa set di file /inc/config.php
-
-Untuk file database .sql, ada di folder /db
 
 ---
 
