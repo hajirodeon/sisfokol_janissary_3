@@ -38,12 +38,25 @@ $filenya = "papan_tulis.php?gmkd=$gmkd";
 
 
 
-//nek enter, ke simpan
-$x_enter = 'onKeyDown="var keyCode = event.keyCode;
-if (keyCode == 13)
+
+
+//nilai folder //////////////////////////////////////////////////////////////
+$path1 = "../../filebox/materi/$gmkd";
+$path2x = "../../filebox/materi";
+
+
+
+//cek, sudah ada belum folder-nya...
+if (!file_exists($path1))
 	{
-	document.formx.btnSMP.focus();
-	}"';
+	chmod("$path2x",0777);
+	mkdir("$path1", 0777, true);
+	chmod("$path2x",0755);
+	chmod("$path1",0755);
+	}
+
+
+
 
 
 

@@ -117,6 +117,7 @@ var CKBUILDER_CONFIG = {
 		'uploadimage' : 1,
 		'wsc' : 1,
 		'wysiwygarea' : 1
+		'youtube' : 1
 	},
 	languages : {
 		'en' : 1,

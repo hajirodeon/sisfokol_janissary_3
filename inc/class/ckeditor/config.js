@@ -11,7 +11,22 @@ CKEDITOR.editorConfig = function( config ) {
 
 
 
+
+config.extraPlugins = 'youtube';
+config.youtube_height = '480';
+config.youtube_responsive = true;
+config.youtube_older = false;
+config.youtube_autoplay = true;
+config.youtube_controls = true;
+
+
 config.extraPlugins = 'FMathEditor';
+config.extraPlugins = 'html5audio';
+
+
+
+
+config.extraPlugins = 'FMathEditor,html5audio,youtube';
 
 
 
