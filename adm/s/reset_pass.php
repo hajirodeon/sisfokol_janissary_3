@@ -61,7 +61,7 @@ if ($_POST['btnCARI'])
 if ($s == "reset")
 	{ 
 	//nilai
-	$nilku = rand(1,5);
+	$nilku = substr($x,0,5);
 	
 	//pass baru
 	$passbarux = md5($nilku);
@@ -121,8 +121,6 @@ else
 					"WHERE nomor LIKE '%$kunci%' ".
 					"OR nama LIKE '%$kunci%' ".
 					"OR tipe LIKE '%$kunci%' ".
-					"OR tapel_nama LIKE '%$kunci%' ".
-					"OR kelas_nama LIKE '%$kunci%' ".
 					"ORDER BY nama ASC";
 	}
 	
@@ -155,12 +153,10 @@ echo '<form action="'.$filenya.'" method="post" name="formx">
 <thead>
 
 <tr valign="top" bgcolor="'.$warnaheader.'">
+<td width="100"><strong><font color="'.$warnatext.'">TIPE</font></strong></td>
 <td width="150"><strong><font color="'.$warnatext.'">IMAGE</font></strong></td>
 <td width="50"><strong><font color="'.$warnatext.'">NOINDUK</font></strong></td>
 <td><strong><font color="'.$warnatext.'">NAMA</font></strong></td>
-<td width="50"><strong><font color="'.$warnatext.'">TIPE</font></strong></td>
-<td width="150"><strong><font color="'.$warnatext.'">TAPEL</font></strong></td>
-<td width="150"><strong><font color="'.$warnatext.'">KELAS</font></strong></td>
 </tr>
 </thead>
 <tbody>';
@@ -185,8 +181,6 @@ if ($count != 0)
 		$i_tipe = balikin($data['tipe']);
 		$i_kode = balikin($data['nomor']);
 		$i_nama = balikin($data['nama']);
-		$i_tapel = balikin($data['tapel_nama']);
-		$i_kelas = balikin($data['kelas_nama']);
 		$i_akses = $i_kode;
 
 
@@ -194,7 +188,8 @@ if ($count != 0)
 
 		
 		echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
-		echo '<td><img src="'.$nil_foto1.'" width="150"></td>
+		echo '<td>'.$i_tipe.'</td>
+		<td><img src="'.$nil_foto1.'" width="150"></td>
 		<td>'.$i_kode.'</td>
 		<td>
 		'.$i_nama.'
@@ -202,10 +197,6 @@ if ($count != 0)
 		<hr>
 		<a href="'.$filenya.'?s=reset&kd='.$i_kd.'" class="btn btn-primary">RESET PASSWORD >></a>
 		</td>
-
-		<td>'.$i_tipe.'</td>
-		<td>'.$i_tapel.'</td>
-		<td>'.$i_kelas.'</td>
         </tr>';
 		}
 	while ($data = mysqli_fetch_assoc($result));

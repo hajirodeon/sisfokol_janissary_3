@@ -563,80 +563,83 @@ if ($tpel != 0)
 				//jika ada
 				if ($tcc != 0)
 					{
-					//echo '<div id="pieCanvas" style="position:absolute; height:350px; width:380px; z-index:1; left: 0px; top: 0px;"></div>';
-					
-					
-					echo '<div id="pieCanvas" style="height:350px; width:100%; z-index:1; left: 0px; top: 0px;"></div>';
-			
-					echo '<script type="text/javascript">
-					var p = new pie();
-					p.add("Opsi #1 ",'.$cc_nil_opsi1.');
-					p.add("Opsi #2 ",'.$cc_nil_opsi2.');
-					p.add("Opsi #3 ",'.$cc_nil_opsi3.');
-					p.add("Opsi #4 ",'.$cc_nil_opsi4.');
-					p.add("Opsi #5 ",'.$cc_nil_opsi5.');
-					p.render("pieCanvas", "Grafik Polling")
-					</script>
-					<br>
-					<br>
-					<br>
-
+					echo '<p>
 					Topik :
 					<br>
 					<strong>'.$cc_topik.'</strong>
-					<br>
+					</p>
 					<br>
 
 
-					
-					<ul>
-					<li>
-					Opsi #01 : [<strong>'.$cc_nil_opsi1.'</strong> vote]
-					<br>
-					<strong>'.$cc_opsi1.'</strong>
-					<br>
-					<br>
-					</li>
-			
-					<li>
-					Opsi #02 : [<strong>'.$cc_nil_opsi2.'</strong> vote]
-					<br>
-					<strong>'.$cc_opsi2.'</strong>
-					<br>
-					<br>
-					</li>
-			
-					<li>
-					Opsi #03 : [<strong>'.$cc_nil_opsi3.'</strong> vote]
-					<br>
-					<strong>'.$cc_opsi3.'</strong>
-					<br>
-					<br>
-					</li>
-			
-					<li>
-					Opsi #04 : [<strong>'.$cc_nil_opsi4.'</strong> vote]
-					<br>
-					<strong>'.$cc_opsi4.'</strong>
-					<br>
-					<br>
-					</li>
-			
-					<li>
-					Opsi #05 : [<strong>'.$cc_nil_opsi5.'</strong> vote]
-					<br>
-					<strong>'.$cc_opsi5.'</strong>
-					<br>
-					<br>
-					</li>
-			
-					</ul>
-			
+					<p>
 					[Total : <strong>'.$cc_total.'</strong> vote].
-			
-					<br>
-					<br>
+					</p>
 					<br>';
+					?>
+						
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+						<canvas id="demobar"></canvas>
+
+				
+				      	<script  type="text/javascript">
+				
+				    	  var ctx = document.getElementById("demobar").getContext("2d");
+				    	  var data = {
+				    	            labels: ["<?php echo $cc_opsi1;?>","<?php echo $cc_opsi2;?>","<?php echo $cc_opsi3;?>","<?php echo $cc_opsi4;?>","<?php echo $cc_opsi5;?>"],
+				    	            datasets: [
+				    	            {
+				    	              label: "Polling",
+				    	              data: ["<?php echo $cc_nil_opsi1;?>", "<?php echo $cc_nil_opsi2;?>", "<?php echo $cc_nil_opsi3;?>", "<?php echo $cc_nil_opsi4;?>", "<?php echo $cc_nil_opsi5;?>"],
+				                    backgroundColor: [
+				                      "rgba(59, 100, 222, 1)",
+				                      "rgba(203, 222, 225, 0.9)",
+				                      "rgba(102, 50, 179, 1)",
+				                      "rgba(201, 29, 29, 1)",
+				                      "rgba(81, 230, 153, 1)",
+				                      "rgba(246, 34, 19, 1)"]
+				    	            }
+				    	            ]
+				    	            };
+				
+				    	  var myBarChart = new Chart(ctx, {
+				    	            type: 'pie',
+				    	            data: data,
+				    	            options: {
+				                    	responsive: true, 
+				                    	legend: {
+								            display: true,
+								            position:'left',
+								            labels: {
+								                fontColor: 'rgb(255, 99, 132)'
+								            }
+								        },
+								        
+										tooltips: {
+										    enabled: true
+										  },
+										  plugins: {
+										    datalabels: {
+										      formatter: (value, ctx) => {
+										
+										        let sum = ctx.dataset._meta[0].total;
+										        let percentage = (value * 100 / sum).toFixed(2) + "%";
+										        return percentage;
+										
+										
+										      },
+										      color: '#fff',
+										    }
+									 	}
+									 
+				    	          	}
+				    	        });
+				    	</script>
+				
+				
+
+					<?php
 					}
 			
 				//tidak ada
