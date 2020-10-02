@@ -295,7 +295,7 @@ else
 				<br>
 				<hr size="1">
 				<big><strong>BERITA Lainnya...</strong></big>
-				<br>';
+				<hr>';
 	
 				//query
 				$a_p = new Pager();
@@ -338,16 +338,17 @@ else
 	
 						echo "<tr valign=\"top\" bgcolor=\"$tk_warna\" onmouseover=\"this.bgColor='$tk_warnaover';\" onmouseout=\"this.bgColor='$tk_warna';\">";
 						echo '<td valign="top">
-						<UL>
-						<LI>
 						<strong>'.$dt_judul.'</strong>
 						<br>
 						[<em>Kategori : <strong>'.$kat_kategori.'</strong></em>].
+						<br>
 						[<em>'.$dt_postdate.'</em>].
+						<br>
 						[(<strong>'.$tjko.'</strong>) Komentar].
+						<br>
 						<a href="'.$filenya.'&s=detail&artkd='.$dt_kd.'&page='.$page.'" title="'.$dt_judul.'" class="btn btn-danger">SELENGKAPNYA >></a>
-						</LI>
-						</UL>
+						<hr>
+
 						</td>
 						</tr>';
 				  		}

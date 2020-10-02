@@ -296,8 +296,6 @@ mysqli_query($koneksi, "INSERT INTO user_blog_status(kd, kd_user, user_tipe, ".
 //online terakhir ////////////////////////////////////////////////////////////////////////////////
 		
 
-
-
 ?>
 
           

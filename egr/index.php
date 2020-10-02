@@ -272,8 +272,6 @@ mysqli_query($koneksi, "INSERT INTO user_blog_status(kd, kd_user, user_tipe, ".
 //online terakhir ////////////////////////////////////////////////////////////////////////////////
 		
 
-		
-
 ?>
 
           
@@ -281,8 +279,6 @@ mysqli_query($koneksi, "INSERT INTO user_blog_status(kd, kd_user, user_tipe, ".
 
 
 <?php
-		
-
 //isi
 $isi = ob_get_contents();
 ob_end_clean();

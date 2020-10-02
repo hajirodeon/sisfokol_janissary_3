@@ -229,8 +229,11 @@ else
 
 					//ambil kode untuk embed
 					$pecahku = explode("=", $url);
-					$i_filex2 = trim($pecahku[1]); 
-
+					$i_kata1 = trim($pecahku[1]);
+					
+					//sebelum tanda &
+					$pecahku2 = explode("&", $i_kata1);
+					$i_filex2 = trim($pecahku2[0]);
 
 		
 					echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$e_warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
