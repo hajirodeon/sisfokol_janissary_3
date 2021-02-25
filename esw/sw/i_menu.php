@@ -39,6 +39,12 @@ echo '<div class="table-responsive">
 
 
 <td>
+<a href="dvideo2.php?gmkd='.$gmkd.'" title="Video BroadCast" class="btn btn-primary">::VIDEO BROADCAST</a>
+</td>
+
+
+
+<td>
 <a href="dvideo.php?gmkd='.$gmkd.'" title="Video Youtube" class="btn btn-primary">::VIDEO YOUTUBE</a>
 </td>
 
