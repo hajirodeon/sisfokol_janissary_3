@@ -336,6 +336,13 @@ TAMPILAN AKSES SISWA
 <img src="tmp_tampilan/siswa/20.png" width="100%"> 
 </p>
 
+---
+
+https://sociabuzz.com/hajirodeon
+
+Teknik khusus nih, bagi kamu2 yg mau support karya2 dan produk2 ku ya 😊😁
+
+
 
 
 
